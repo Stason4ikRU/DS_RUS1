@@ -11,9 +11,10 @@ t.modinfo = modinfo
 t.StorePath = MODROOT--"scripts/languages/"
 t.UpdateLogFileName = "updatelog.txt"
 t.MainPOfilename = "russian.po"
-t.ROG_POfilename = "ROG.po"
-t.SW_POfilename = "SW.po"
-t.HAM_POfilename = "HAM.po"
+t.DeclensionsPOfilename = "declensions.po"
+--t.ROG_POfilename = "ROG.po"
+--t.SW_POfilename = "SW.po"
+--t.HAM_POfilename = "HAM.po"
 t.UpdatePeriod = {"OncePerLaunch","OncePerDay","OncePerWeek","OncePerMonth","Never"}
 t.SteamURL = "https://steamcommunity.com/sharedfiles/filedetails/?id=1562475986"
 
@@ -28,81 +29,15 @@ dumptable = GLOBAL.dumptable
 GetPlayer = GLOBAL.GetPlayer
 
 
-
-
-
-
 t.ROG_Installed = rawget(GLOBAL,"REIGN_OF_GIANTS") and GLOBAL.IsDLCEnabled and GLOBAL.IsDLCEnabled(GLOBAL.REIGN_OF_GIANTS)
 t.SW_Installed = rawget(GLOBAL,"CAPY_DLC") and GLOBAL.IsDLCEnabled and GLOBAL.IsDLCEnabled(GLOBAL.CAPY_DLC)
-t.H_Installed = rawget(GLOBAL,"HAM") and GLOBAL.IsDLCEnabled and GLOBAL.IsDLCEnabled(GLOBAL.HAM)
-
+t.H_Installed = rawget(GLOBAL,"PORKLAND_DLC") and GLOBAL.IsDLCEnabled and GLOBAL.IsDLCEnabled(GLOBAL.PORKLAND_DLC)
 
 
 function GLOBAL.escapeR(str) --Удаляет \r из конца строки. Нужна для строк, загружаемых в юниксе.
 	if string.sub(str,#str)=="\r" then return string.sub(str,1,#str-1) else return str end
 end
 local escapeR=GLOBAL.escapeR
-
-
-
-
-local function GetPoFileVersion(file) --Возвращает версию po файла
-	local f = assert(io.open(file,"r"))
-	local ver=nil
-	for line in f:lines() do
-		ver=string.match(escapeR(line),"#%s+Версия%s+(.+)%s*$")
-		if ver then break end
-	end
-	f:close()
-	if not ver then ver="не задана" end
-	return ver
-end
-
---Если задан другой путь для складывания по и лога, то проверяем, есть ли они там, и если нет, то копируем
-if t.StorePath and t.StorePath~=MODROOT then
-	local function copyfile(source,dest) --копирует файл из source в dest. Оба пути должны содержать имя файла.
-		local f = assert(io.open(source,"rb"))
-		local content = f:read("*all")
-		f:close()
-		f = assert(io.open(dest,"w"))
-		f:write(content)
-		f:close()
-	end
-	--Проверяем po файл
-	if GLOBAL.kleifileexists(MODROOT..t.MainPOfilename)
-	   and (not GLOBAL.kleifileexists(t.StorePath..t.MainPOfilename) or GetPoFileVersion(t.StorePath..t.MainPOfilename)~=modinfo.version) then
-		copyfile(MODROOT..t.MainPOfilename,t.StorePath..t.MainPOfilename)
-	end
-
-	if t.ROG_Installed or t.SW_Installed then
-		-- Проверяем ROG po файл
-		if GLOBAL.kleifileexists(MODROOT..t.ROG_POfilename)
-		   and (not GLOBAL.kleifileexists(t.StorePath..t.ROG_POfilename) or GetPoFileVersion(t.StorePath..t.ROG_POfilename)~=modinfo.version) then
-			copyfile(MODROOT..t.ROG_POfilename,t.StorePath..t.ROG_POfilename)
-		end
-		-- Проверяем SW po файл
-		if GLOBAL.kleifileexists(MODROOT..t.SW_POfilename)
-		   and (not GLOBAL.kleifileexists(t.StorePath..t.SW_POfilename) or GetPoFileVersion(t.StorePath..t.SW_POfilename)~=modinfo.version) then
-			copyfile(MODROOT..t.SW_POfilename,t.StorePath..t.SW_POfilename)
-		end
-		-- Проверяем H po файл
-		if GLOBAL.kleifileexists(MODROOT..t.H_POfilename)
-		   and (not GLOBAL.kleifileexists(t.StorePath..t.H_POfilename) or GetPoFileVersion(t.StorePath..t.H_POfilename)~=modinfo.version) then
-			copyfile(MODROOT..t.H_POfilename,t.StorePath..t.H_POfilename)
-		end
-	end
-
-
-	--Проверяем лог файл
-	if GLOBAL.kleifileexists(MODROOT..t.UpdateLogFileName)
-	   and not GLOBAL.kleifileexists(t.StorePath..t.UpdateLogFileName) then
-		copyfile(MODROOT..t.UpdateLogFileName,t.StorePath..t.UpdateLogFileName)
-	end
-	--Финальная проверка, если вдруг не создался файл po
-	if not GLOBAL.kleifileexists(t.StorePath..t.MainPOfilename) then
-		t.StorePath=MODROOT
-	end
-end
 
 
 
@@ -177,90 +112,6 @@ function ApplyRussianFonts()
 end
 
 
---Проверяем версию по файла, и если она не соответствует текущей версии, то отключаем перевод
--- local poversion=GetPoFileVersion(t.StorePath..t.MainPOfilename)
--- if poversion~=modinfo.version then
-	-- local OldStart=GLOBAL.Start --Переопределяем функцию, после выполнения которой можно будет вывести попап.
-	-- function Start() 
-		-- OldStart()
-		-- ApplyRussianFonts()
-		-- local a,b="/","\\"
-		-- if GLOBAL.PLATFORM == "NACL" or GLOBAL.PLATFORM == "PS4" or GLOBAL.PLATFORM == "LINUX_STEAM" or GLOBAL.PLATFORM == "OSX_STEAM" then
-			-- a,b=b,a
-		-- end
-		-- local text="Версия игры: "..modinfo.version..", версия PO файла: "..poversion.."\nПуть: "..string.gsub(GLOBAL.CWD..t.StorePath,a,b)..t.MainPOfilename.."\nПеревод текста отключён."
-		-- local PopupDialogScreen = require "screens/popupdialog"
-	        -- GLOBAL.TheFrontEnd:PushScreen(PopupDialogScreen("Неверная версия PO файла", text,
-			-- {{text="Понятно", cb = function() GLOBAL.TheFrontEnd:PopScreen() end}}))
-	-- end
-	-- GLOBAL.Start=Start
-	-- return
--- end
-
-
---Функция проверяет файл language.lua на наличие подключения po файла и старых версий русификации
-function language_lua_has_rusification(filename)
-	if not GLOBAL.kleifileexists(filename) then return false end --Нет файла? Нет проблем
-
-
-	local f = assert(io.open(filename,"r")) --Читаем весь файл в буфер
-	local content =""
-	for line in f:lines() do
-		content=content..line
-	end
-	f:close()
-
-	content=string.gsub(content,"\r","")--Удаляем все возвраты каретки, на случай, если это юникс
-	content=string.gsub(content,"%-%-%[%[.-%]%]","")--Удаляем многострочные комментарии
-	if string.sub(content,#content)~="\n" then content=content.."\n" end --добавляем перенос строки в самом конце, если нужно
-	local tocomment={}
-	for str in string.gmatch(content,"([^\n]*)\n") do --Обходим все строки
-		if not str then str="" end
-		str=string.gsub(str,"%-%-.*$","")--Удаляем все однострочные комментарии
-		--Запоминаем строки, которые нужно отключить
-		if string.find(str,"LanguageTranslator:LoadPOFile(",1,true) then table.insert(tocomment,str) end --загрузка po
-		if string.find(str,"russian_fix",1,true) then table.insert(tocomment,str) end --загрузка моей ранней версии русификации
-	end
-	if #tocomment==0 then return false end --Если не нашлось строк, которые нужно закомментировать, то выходим
-
-	content={}
-	local f=assert(io.open(filename,"r"))
-	for line in f:lines() do --Снова считываем все строки, параллельно проверяя
-		for _,str in ipairs(tocomment) do --обходим все строки, которые нужно закомментировать
-			local a,b=string.find(line,str,1,true)
-			if a then --если есть совпадение то...
-				line=string.sub(line,1,a-1).."--"..str..string.sub(line,b+1)
-				break --комментируем и прерываем цикл
-			end
-		end
-		table.insert(content,line)
-	end
-	f:close()
-	f = assert(io.open(filename,"w")) --Формируем новый language.lua с отключёнными строками
-	for _,str in ipairs(content) do
-		f:write(str.."\n")
-	end
-	f:close()
-	return true
-end
-local languageluapath ="scripts/languages/language.lua"
-
-if language_lua_has_rusification(languageluapath) then --Если в language.lua подключается русификация
-	local OldStart=GLOBAL.Start --Переопределяем функцию, после выполнения которой можно будет вывести попап и перезагрузиться
-	function Start() 
-		OldStart()
-		ApplyRussianFonts()
-		local a,b="/","\\"
-		if GLOBAL.PLATFORM == "NACL" or GLOBAL.PLATFORM == "PS4" or GLOBAL.PLATFORM == "LINUX_STEAM" or GLOBAL.PLATFORM == "OSX_STEAM" then
-			a,b=b,a
-		end
-		local text="В файле "..string.gsub("data/"..languageluapath,a,b).."\nнайдено подключение другой локализации.\nЭто подключение было деактивировано."
-		local PopupDialogScreen = require "screens/popupdialog"
-	        GLOBAL.TheFrontEnd:PushScreen(PopupDialogScreen("Обнаружена посторонняя локализация", text,
-			{{text="Понятно", cb = function() GLOBAL.TheFrontEnd:PopScreen() GLOBAL.SimReset() end}}))
-	end
-	GLOBAL.Start=Start
-end
 
 --Переопределяем функцию закрытия консоли
 local OldClose
@@ -299,14 +150,22 @@ Assets={
 	Asset("ATLAS",MODROOT.."images/rus_wes.xml"), 
 	Asset("ATLAS",MODROOT.."images/rus_wolfgang.xml"), 
 	Asset("ATLAS",MODROOT.."images/rus_wendy.xml")
-	}
-	if t.ROG_Installed or t.SW_Installed then
-		table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wathgrithr.xml"))
-		table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_webber.xml"))
-	end
-	if t.SW_Installed then
-		table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_walani.xml"))
-	end
+}
+
+if t.ROG_Installed or t.SW_Installed or t.H_Installed then
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wathgrithr.xml"))
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_webber.xml"))
+end
+if t.SW_Installed or t.H_Installed then
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_walani.xml"))
+	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_warly.xml"))
+	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_woodlegs.xml"))
+	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilbur.xml"))
+end
+if t.H_Installed then
+	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_warbucks.xml"))
+	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilba.xml"))
+end
 
 
 
@@ -341,47 +200,6 @@ end)
 
 GLOBAL.RusUpdatePeriod={"OncePerLaunch","OncePerDay","OncePerWeek","OncePerMonth","Never"}
 
-function t.ChaptersListInit()
-	local tbl={
-	{id="181337", text="Меню и сообщения",			name="ui",			potype="main"},
-	{id="181142", text="Реплики Максвелла",			name="speech_maxwell",		potype="main"},
-	{id="181335", text="Реплики Вуди", 			name="speech_woodie",		potype="main"},
-	{id="181143", text="Реплики Венди",			name="speech_wendy",		potype="main"},
-	{id="181144", text="Реплики Уикерботтом",		name="speech_wickerbottom",	potype="main"},
-	{id="181145", text="Реплики Уиллоу",			name="speech_willow",		potype="main"},
-	{id="181333", text="Реплики Уилсона",			name="speech_wilson",		potype="main"},
-	{id="181334", text="Реплики Вольфганга",		name="speech_wolfgang",		potype="main"},
-	{id="181336", text="Реплики WX-78",			name="speech_wx78",		potype="main"},
-	{id="181210", text="Дополнительный текст",		name="misc",			potype="main"},
-	{id="181139", text="Названия предметов",		name="names",			potype="main"},
-	{id="181132", text="Игровые действия",			name="actions",			potype="main"},
-	{id="181155", text="Имена зверей",			name="animalnames",		potype="main"},
-	{id="181156", text="Реплики зверей",			name="animaltalks",		potype="main"},
-	{id="181135", text="Описание персонажей",		name="character",		potype="main"},
-	{id="181136", text="Реплики топора Люси",		name="lucy",			potype="main"},
-	{id="181137", text="Дополнительные реплики Максвелла",	name="maxwell_misc",		potype="main"},
-	{id="181140", text="Описания рецептов",			name="recipies",		potype="main"},
-	{id="192218", text="Правила склонений и другие мелочи",	name="private",			potype="main"}  
-	}
-	if t.ROG_Installed or t.SW_Installed or t.H_Installed then
-		table.insert(tbl,{id="210434", text="ROG Реплики Веббера",	name="DLC1_speech_webber",	potype="ROG"})
-		table.insert(tbl,{id="210433", text="ROG Реплики Вигфрид",	name="DLC1_speech_wathgrithr",	potype="ROG"})
-		table.insert(tbl,{id="225881", text="ROG Реплики Максвелла",	name="DLC1_speech_maxwell",	potype="ROG"})
-		table.insert(tbl,{id="225887", text="ROG Реплики Вуди",		name="DLC1_speech_woodie",	potype="ROG"})
-		table.insert(tbl,{id="225882", text="ROG Реплики Венди",	name="DLC1_speech_wendy",	potype="ROG"})
-		table.insert(tbl,{id="225883", text="ROG Реплики Уикерботтом",	name="DLC1_speech_wickerbottom",potype="ROG"})
-		table.insert(tbl,{id="225884", text="ROG Реплики Уиллоу",	name="DLC1_speech_willow",	potype="ROG"})
-		table.insert(tbl,{id="225885", text="ROG Реплики Уилсона",	name="DLC1_speech_wilson",	potype="ROG"})
-		table.insert(tbl,{id="225886", text="ROG Реплики Вольфганга",	name="DLC1_speech_wolfgang",	potype="ROG"})
-		table.insert(tbl,{id="225888", text="ROG Реплики WX-78",	name="DLC1_speech_wx78",	potype="ROG"})
-	end                                 
-                                               
-	return tbl
-end
-t.ChaptersList = t.ChaptersListInit()
-
-
-
 
 
 --Возвращает корректную форму слова день
@@ -392,6 +210,7 @@ local function StringTime(n,s)
 	return s[pl_type]
 end 
 
+
 --Пытается сформировать правильные окончания в словах названия предмета str1 в соответствии действию action
 function rebuildname(str1,action,objectname)
 	local function repsubstr(str,pos,substr)--вставить подстроку substr в строку str в позиции pos
@@ -401,14 +220,14 @@ function rebuildname(str1,action,objectname)
 	if not str1 then
 		return nil
 	end
-	local 	sogl=  {['б']=1,['в']=1,['г']=1,['д']=1,['ж']=1,['з']=1,['к']=1,['л']=1,['м']=1,['н']=1,['п']=1,
-			['р']=1,['с']=1,['т']=1,['ф']=1,['х']=1,['ц']=1,['ч']=1,['ш']=1,['щ']=1}
+	local 	sogl=  {['б']=1,['в']=1,['г']=1,['д']=1,['ж']=1,['з']=1,['к']=1,['л']=1,['м']=1,['н']=1,['п']=1,['р']=1,['с']=1,['т']=1,['ф']=1,['х']=1,['ц']=1,['ч']=1,['ш']=1,['щ']=1}
 
 	local sogl2 = {['г']=1,['ж']=1,['к']=1,['х']=1,['ц']=1,['ч']=1,['ш']=1,['щ']=1}
 	local sogl3 = {["р"]=1,["л"]=1,["к"]=1,["Р"]=1,["Л"]=1,["К"]=1}
 
-	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true}
-	
+	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true, pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_banker = true, pigman_collector = true, pigman_hunter = true, pigman_mayor = true, pigman_mechanic = true, pigman_professor = true, pigman_usher = true, pigman_royalguard = true, pigman_royalguard_2 = true, pigman_farmer = true, pigman_miner = true, pigman_queen = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true, pigman_banker_shopkeep = true, pigman_shopkeep = true, pigman_hunter_shopkeep = true, pigman_mayor_shopkeep = true, pigman_farmer_shopkeep = true, pigman_miner_shopkeep = true, pigman_collector_shopkeep = true, pigman_professor_shopkeep = true, scorpion = true}
+	local pigfemale = {pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true}
+	local seeds = {SEEDS = true, CORN_SEEDS = true, WATERMELON_SEEDS = true, CARROT_SEEDS = true, DRAGONFRUIT_SEEDS = true, DURIAN_SEEDS = true, EGGPLANT_SEEDS = true, POMEGRANATE_SEEDS = true, PUMPKIN_SEEDS = true, SWEET_POTATO_SEEDS = true, COFFEEBEANS = true}
 	local resstr=""
 	local delimetr
 	local wasnoun=false
@@ -421,7 +240,9 @@ function rebuildname(str1,action,objectname)
 		delimetr=string.sub(str,#str)
 		str=string.sub(str,1,#str-1)
 		if action=="WALKTO" then --идти к (кому? чему?) Дательный
-			if string.sub(str,#str-1)=="ая" and resstr=="" then
+			if str=="Конрой" then
+				str="Конрою"
+			elseif string.sub(str,#str-1)=="ая" and resstr=="" then
 				str=repsubstr(str,#str-1,"ой")
 			elseif string.sub(str,#str-1)=="ая" then
 				str=repsubstr(str,#str-1,"ей")
@@ -435,6 +256,8 @@ function rebuildname(str1,action,objectname)
 				str=repsubstr(str,#str-1,"ему")
 			elseif string.sub(str,#str-1)=="ое" then
 				str=repsubstr(str,#str-1,"ому")
+			elseif string.sub(str,#str-3)=="аяся" then
+				str=repsubstr(str,#str-3,"ейся")
 			elseif string.sub(str,#str-1)=="ее" then
 				str=repsubstr(str,#str-1,"ему")
 			elseif string.sub(str,#str-1)=="ые" then
@@ -499,6 +322,8 @@ function rebuildname(str1,action,objectname)
 			elseif string.sub(str,#str)=="е" and not wasnoun then
 				str=repsubstr(str,#str,"ю")
 				wasnoun=true
+			elseif sogl[string.sub(str,#str)] and pigfemale[objectname] and not wasnoun then
+				wasnoun=true
 			elseif sogl[string.sub(str,#str)] and not wasnoun then
 				str=str.."у"
 				wasnoun=true
@@ -522,9 +347,13 @@ function rebuildname(str1,action,objectname)
 				str=string.sub(str,1,#str-1).."я"
 			elseif string.sub(str,#str)=="й" then
 				str=string.sub(str,1,#str-1).."я"
+			elseif sogl[string.sub(str,#str)] and pigfemale[objectname] then
+				str=str
 			elseif sogl[string.sub(str,#str)] then
 				str=str.."а"
 			end
+		elseif action=="SHOP" and objectname and seeds[objectname] then
+			str=str
 		elseif action then --Изучить (Кого? Что?) Винительный
 			if string.sub(str,#str-1)=="ая" then
 				str=repsubstr(str,#str-1,"ую")
@@ -532,8 +361,12 @@ function rebuildname(str1,action,objectname)
 				str=repsubstr(str,#str-1,"юю")
 			elseif string.sub(str,#str)=="а" then
 				str=repsubstr(str,#str,"у")
+			elseif string.sub(str,#str-3)=="аяся" then
+				str=repsubstr(str,#str-3,"уюся")
 			elseif string.sub(str,#str)=="я" then
 				str=repsubstr(str,#str,"ю")
+			elseif string.sub(str,#str-1)=="ок" then
+				str=repsubstr(str,#str-1,"ка")
 			end
 		end
 		resstr=resstr..str..delimetr
@@ -543,142 +376,13 @@ function rebuildname(str1,action,objectname)
 end
 
 
+
 GLOBAL.testname=function(name, key)
 	if name and (not key) and type(name)=="string" and GLOBAL.rawget(STRINGS.NAMES,name:upper()) then key=name:upper() name=STRINGS.NAMES[key] end
 	local output = "Идти к "..rebuildname(name,"WALKTO", key).."\n"
 	output = output .. "Осмотреть "..rebuildname(name,"DEFAULTACTION", key)
 	print("\n"..output.."\n")
 	return output
-end
-
-function t.testnames(fileorlist, outputfilename)
-	local res
-	if not fileorlist then return end
-	if type(fileorlist)=="string" then
-		local f = assert(io.open(MODROOT..fileorlist, "r"))
-		fileorlist = {}
-		for line in f:lines() do
-			if line~="" then table.insert(fileorlist, line) end
-		end
-		f:close()
-	end
-	outputfilename = outputfilename or "testnames.txt"
-	local f = assert(io.open(MODROOT..outputfilename, "w"))
-	for _, key in ipairs(fileorlist) do
-		key = STRINGS.NAMES[key] and key or key:upper()
-		f:write(key.."\t")
-		if STRINGS.NAMES[key] then
-			f:write(STRINGS.NAMES[key].."\t")
-			local foundgender = false
-			for gender, list in pairs(t.NamesGender) do
-				if list[key] or list[key:lower()] then
-					if gender=="he" then f:write("МУЖСКОЙ")
-					elseif gender=="he2" then f:write("МУЖСКОЙ ОДУШЕВЛЁННЫЙ")
-					elseif gender=="she" then f:write("ЖЕНСКИЙ")
-					elseif gender=="it" then f:write("СРЕДНИЙ")
-					elseif gender=="plural" then f:write("МНОЖЕСТВЕННОЕ ЧИСЛО")
-					elseif gender=="plural2" then f:write("МНОЖЕСТВЕННОЕ ЧИСЛО, ОДУШЕВЛЁННОЕ") end
-					foundgender = true
-					f:write("\n")
-					break
-				end
-			end
-			if not foundgender then f:write("МУЖСКОЙ (по умолчанию)\n") end
-			f:write(GLOBAL.testname(STRINGS.NAMES[key], key).."\n\n")
-		else
-			f:write("ОШИБКА. НЕ НАЙДЕН КЛЮЧ\n\n")
-		end
-	end
-	f:close()
-end
-
-function parsefixed(file, fillall)
-	local f = assert(io.open(MODROOT..file, "r"))
-	local lines = {}
-	for line in f:lines() do
-		table.insert(lines,line)
-	end
-	f:close()
-	local i = 1
-	local txt1, txt2 = "", ""
-	local function buildline(starter, new, old, key)
-		local res = starter..new
-		local len = #res
-		while len<48 do
-			res = res.. "\t"
-			len = len+(4-len%4)
-		end
-		res = res..old
-		len = len+#old
-		while len<88 do
-			res = res.. "\t"
-			len = len+(4-len%4)
-		end
-		res = res..key
-		return res
-	end
-	while i<#lines do
-		local key, val = lines[i]:match("^(.-)\t(.-)\t")
-		local tofixwalkto, walkto = lines[i+1]:match("(.?)Идти к (.*)")
-		local tofixinspect, inspect = lines[i+2]:match("(.?)Осмотреть (.*)")
-		if key and val then
-			if (tofixwalkto=="-" or fillall) and walkto then txt1 = txt1..buildline("#Идти к ", walkto, val, key).."\n" end
-			if (tofixinspect=="-" or fillall) and inspect then txt2 = txt2..buildline("#Изучить ", inspect, val, key).."\n" end
-		end
-		i = i+4
-	end
-	f = assert(io.open(MODROOT.."toadd.txt", "w"))
-	f:write("WALKTO\n"..txt1.."\n\n\n")
-	f:write("INSPECT\n"..txt2)
-	f:close()
-end
---parsefixed("testnames.txt", false)
-
-
-
-
---Сохраняет в файле fn все имена с действием, указанным в параметре action)
-local function printnames(fn,action,openfn)
-	local filename = MODROOT..fn..".txt"
-	local str1,str2
-	local names={}
-	local f=assert(io.open(MODROOT..(openfn or "names_new.txt"),"r"))
-	for line in f:lines() do
-		str1=string.match(line,"[.\t]([^.\t]*)$")
-		str2=STRINGS.NAMES[str1]
-		if not (t.RussianNames[str2] and t.RussianNames[str2]["KILL"]) then
-			local s1
-			if action=="DEFAULTACTION" then
-				s1="Изучить "
-			elseif action=="WALKTO" then
-				s1="Идти к "
-			elseif action=="KILL" then
-				s1="Он был убит "
-			end
-			s1=s1..rebuildname(str2,action,str1:lower())
-			local name=s1
-			local len=#s1
-			while len<48 do
-				name=name.."\t"
-				len=len+8
-			end
-			s1=str2
-			name=name..s1
-			len=#s1
-			while len<48 do
-				name=name.."\t"
-				len=len+8
-			end
-			name=name..str1.."\n"
-			table.insert(names,name)
-		end
-	end
-	f:close()
-	local file = io.open(filename, "w")
-	for i,v in ipairs(names) do
-		file:write(v)
-	end
-	file:close()
 end
 
 
@@ -690,31 +394,30 @@ t.ShouldBeCapped = {} --Таблица, в которой находится список названий, первое сло
 --Загружает список имён, которые должны начинаться с заглавной буквы. Список должен состоять из названий префабов.
 function t.LoadCappedNames(data)
 	t.ShouldBeCapped={}
-	local filename = t.StorePath..t.MainPOfilename
+	local filename = t.StorePath..t.DeclensionsPOfilename
 	if (data and #data==0) or not GLOBAL.kleifileexists(filename) then return nil end
 	local insection=false
 	local function parseline(line)
 		line=escapeR(line)
 		if string.sub(line,1,10)=="# --------" then
 			insection=string.find(line,"Должны начинаться с заглавной буквы",1,true)
-		elseif insection and string.sub(line,1,1)=="#" then
-			t.ShouldBeCapped[string.sub(line,2):lower()]=true
+			elseif insection and string.sub(line,1,1)=="#" then
+				t.ShouldBeCapped[string.sub(line,2):lower()]=true
+			end
 		end
-	end
-	if data then
-		for _,line in ipairs(data) do
-			parseline(line)
+		if data then
+			for _,line in ipairs(data) do
+				parseline(line)
+			end
+		else
+			local f=assert(io.open(filename,"r"))
+			for line in f:lines() do
+				parseline(line)
+			end
+			f:close()
 		end
-	else
-		local f=assert(io.open(filename,"r"))
-		for line in f:lines() do
-			parseline(line)
-		end
-		f:close()
+
 	end
-	
-	end
-	
 
 
 
@@ -735,7 +438,7 @@ function t.LoadNamesGender(data)
 	t.NamesGender["it"]={}
 	t.NamesGender["plural"]={}
 	t.NamesGender["plural2"]={}
-	local filename = t.StorePath..t.MainPOfilename
+	local filename = t.StorePath..t.DeclensionsPOfilename
 	if (data and #data==0) or not GLOBAL.kleifileexists(filename) then return nil end
 	local insection=false
 	local part=nil
@@ -771,21 +474,18 @@ end
 
 
 
-
-
 --Загружает исправленные названия предметов в нужном падеже из po файла. Если указана data, то парсится она
-function t.LoadFixedNames(BuildErrorLog, data)
+function t.LoadFixedNames(data)
 	t.RussianNames={}
 	t.ActionsToSave={}
 
-	local filename = t.StorePath..t.MainPOfilename
+	local filename = t.StorePath..t.DeclensionsPOfilename
 
 	if (data and #data==0) or not GLOBAL.kleifileexists(filename) then return nil end
 
 	local action=nil
 	local predcessorword=""
 	local f,errorlog=nil,{}
-	if BuildErrorLog then f=assert(io.open(MODROOT.."FixedNamesErrors.txt","w")) end
 
 	local function parseline(line)
 		line=escapeR(line)
@@ -808,15 +508,7 @@ function t.LoadFixedNames(BuildErrorLog, data)
 			local translation=string.match(line,predcessorword.." (.-)\t") 
 			local original=string.match(line,"\t([^\t]+)\t") 
 			local path=string.match(line,"\t([^\t]-)$")
-			if BuildErrorLog and path~="OTHER" then
-				if not STRINGS.NAMES[path] and not errorlog[path] then
-					f:write("Не найден предмет "..tostring(path).."\n")
-					errorlog[path]=true
-				elseif GLOBAL.LanguageTranslator.languages["ru"]["STRINGS.NAMES."..path]~=original and not errorlog[path] then
-					f:write("На notabenoid изменилось название предмета "..tostring(original).." ("..tostring(path)..")".." на "..GLOBAL.LanguageTranslator.languages["ru"]["STRINGS.NAMES."..path].."\n")
-					errorlog[path]=true
-				end
-			end
+
 			table.insert(t.ActionsToSave[action],{pth=path,trans=translation,orig=original})
 			if t.RussianNames[original] then
 				t.RussianNames[original][action]=translation
@@ -845,9 +537,7 @@ function t.LoadFixedNames(BuildErrorLog, data)
 		end
 		f:close()
 	end
-	if BuildErrorLog then f:close() end
 end
-
 
 
 --Делаем бекап названия версии игры
@@ -858,62 +548,6 @@ LoadPOFile(t.StorePath..t.MainPOfilename, "ru")
 
 --Восстанавливаем название версии игры из бекапа
 GLOBAL.LanguageTranslator.languages["ru"]["STRINGS.UI.MAINSCREEN.UPDATENAME"]=UPDATENAME
-
-
---Подгружает реплики персонажей для ROG и SW
-function ApplyROG_SWRussification()
-	if t.ROG_Installed or t.SW_Installed then
-		--Делаем бэкап строк перевода
-		local rustemp={}
-		for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
-			rustemp[i]=v
-		end
-		--Загружаем PO для ROG
-		LoadPOFile(t.StorePath..t.ROG_POfilename, "ru")
-		--Объединяем строки перевода
-		for i,v in pairs(rustemp) do
-			if not GLOBAL.LanguageTranslator.languages["ru"][i] then
-				GLOBAL.LanguageTranslator.languages["ru"][i]=v
-			end
-		end
-		rustemp=nil
-
-		if t.SW_Installed then
-			--Снова делаем бэкап строк перевода
-			local rustemp={}
-			for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
-				rustemp[i]=v
-			end
-			--Загружаем PO для SW
-			LoadPOFile(t.StorePath..t.SW_POfilename, "ru")
-			--Объединяем строки перевода
-			for i,v in pairs(rustemp) do
-				if not GLOBAL.LanguageTranslator.languages["ru"][i] then
-					GLOBAL.LanguageTranslator.languages["ru"][i]=v
-				end
-			end
-			rustemp=nil
-		end
-		
-		if t.H_Installed then
-			--Снова делаем бэкап строк перевода
-			local rustemp={}
-			for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
-				rustemp[i]=v
-			end
-			--Загружаем PO для SW
-			LoadPOFile(t.StorePath..t.H_POfilename, "ru")
-			--Объединяем строки перевода
-			for i,v in pairs(rustemp) do
-				if not GLOBAL.LanguageTranslator.languages["ru"][i] then
-					GLOBAL.LanguageTranslator.languages["ru"][i]=v
-				end
-			end
-			rustemp=nil
-		end
-	end
-end
-ApplyROG_SWRussification()
 
 
 
@@ -944,6 +578,7 @@ local LetterCasesHash={u2l={["А"]="а",["Б"]="б",["В"]="в",["Г"]="г",["Д"]="д",["
 							["и"]="И",["й"]="Й",["к"]="К",["л"]="Л",["м"]="М",["н"]="Н",["о"]="О",["п"]="П",["р"]="Р",
 							["с"]="С",["т"]="Т",["у"]="У",["ф"]="Ф",["х"]="Х",["ц"]="Ц",["ч"]="Ч",["ш"]="Ш",["щ"]="Щ",
 							["ъ"]="Ъ",["ы"]="Ы",["ь"]="Ь",["э"]="Э",["ю"]="Ю",["я"]="Я"}}
+
 --первый символ в нижний регистр
 local function firsttolower(tmp)
 	if not tmp then return end
@@ -1151,29 +786,11 @@ end
 
 
 
-
 for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
 	GLOBAL.LanguageTranslator.languages["ru"][i]=FixQuotes(GLOBAL.LanguageTranslator.languages["ru"][i])
 end
 
---[[	local f=io.open(MODROOT.."test.txt","w")
-for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
-	if string.sub(i,1,15)=="STRINGS.MAXWELL" then
-		local a,b,c,d
-		a=t.ParseTranslationTags(v, "wilson")
-		b=t.ParseTranslationTags(v, "wickerbottom")
-		c=t.ParseTranslationTags(v, "it")
-		d=t.ParseTranslationTags(v, "plural")
-		if v~=a or v~=b or v~=c or v~=d then
-			f:write(v.."\n")
-			f:write("He:   "..a.."\n")
-			f:write("She:  "..b.."\n")
-			f:write("It:   "..c.."\n")
-			f:write("They: "..d.."\n\n")
-		end
-	end
-end
-f:close()]]
+
 
 --Обрабатываем все произносимые реплики, извлекая из них теги
 AddClassPostConstruct("components/talker", function(self)
@@ -1205,12 +822,6 @@ end
 
 
 
-
-
-
-
-
-
 --Перегоняем перевод в STRINGS
 GLOBAL.TranslateStringTable(GLOBAL.STRINGS)
 
@@ -1218,24 +829,7 @@ t.LoadCappedNames() --Загружаем имена, которые должны оставаться заглавными
 
 t.LoadNamesGender() --Загружаем списки имён, отсортированных по роду и числу
 
-t.LoadFixedNames(false) --загружаем исключения склонений
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+t.LoadFixedNames() --загружаем исключения склонений
 
 
 
@@ -1321,9 +915,6 @@ function FixPrefix(prefix,act,item)
 	prefix=string.sub(prefix,1,1)..russianlower(string.sub(prefix,2,-2))
 	return prefix
 end
-
-
-
 
 
 
@@ -1419,9 +1010,33 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 	end
 	if act then --Если есть действие
 		act=act.action.id
-
+		if act=="USEDOOR" then
+			for i,v in pairs(self.components.door.inst) do
+				if type(v)=="string" and v~="" then
+					print("i=",i," v=",v)
+				end
+			end
+		end
+		local exit_places = {pig_shop_doormats = true, doorway_cave = true, doorway_ruins = true}
 		if itisblueprint then
-			name="чертёж предмета \""..name.."\""		
+			name="чертёж предмета \""..name.."\""
+		elseif act=="USEDOOR" and self.components.door.inst.prefab == "prop_door" and exit_places[self.components.door.inst.door_data_bank] then
+			local exit_place = self.components.door.inst.door_data_bank
+			if exit_place == "pig_shop_doormats" then
+				STRINGS.ACTIONS.USEDOOR = "Выйти"
+				name = ""
+			elseif exit_place == "doorway_cave" then
+				STRINGS.ACTIONS.USEDOOR = "Выйти из"
+				name = "пещер"
+			elseif exit_place == "doorway_ruins" then
+				if self.components.door.inst.baseanimname == "day_loop" then
+					STRINGS.ACTIONS.USEDOOR = "Выйти из"
+					name = "руин"
+				else
+					STRINGS.ACTIONS.USEDOOR = "Перейти в"
+					name = "другой зал"
+				end
+			end
 		elseif self.prefab=="wreck" and self.components.named then
 			--Обломки с названием корабля
 			name = self.components.named.nameformat
@@ -1432,6 +1047,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 			name = t.ParseTranslationTags(name, nil, nil, act)
 		 	name = firsttolower(name)
 		else
+			STRINGS.ACTIONS.USEDOOR = "Войти в"
 			name = t.RussianNames[name] and
 				(t.RussianNames[name][act] or t.RussianNames[name]["DEFAULTACTION"] or t.RussianNames[name]["DEFAULT"])
 				or rebuildname(name,act,self.prefab) or name
@@ -1457,6 +1073,60 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 end
 GLOBAL.EntityScript["GetDisplayName"]=GetDisplayNameNew --подменяем на новую
 
+
+if t.H_Installed then
+	GLOBAL.ACTIONS.SHOP.stroverridefn = function(act)
+		if not act.target or not act.target.costprefab or not act.target.components.shopdispenser:GetItem() then
+			return nil
+		else
+			local item_name = string.upper(act.target.components.shopdispenser:GetItem())
+			local wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+			local payitem = STRINGS.NAMES[string.upper(act.target.costprefab)]
+			local qty = ""
+			if act.target.costprefab == "oinc" then		
+				qty = act.target.cost		
+				if qty > 1 then
+					if qty < 5 then
+						payitem = STRINGS.NAMES.OINC.."а"
+					else
+						payitem = STRINGS.NAMES.OINC.."ов"
+					end
+				end
+			end
+
+			if act.doer.components.shopper:IsWatching(act.target) then		
+				return GLOBAL.subfmt(STRINGS.ACTIONS.SHOP_LONG, { wantitem = wantitem, qty=qty, payitem = payitem })
+			else
+				return GLOBAL.subfmt(STRINGS.ACTIONS.SHOP_TAKE, { wantitem = wantitem })
+			end
+		end
+	end
+
+	GLOBAL.ACTIONS.PICKUP.stroverridefn = function(act)
+		if act.target and act.target:HasTag("cost_one_oinc") then
+
+			if act.target.components.shelfer and not act.target.components.shelfer.shelf:HasTag("playercrafted") then
+
+				local wantitem = nil
+				if act.target.prefab == "shelf_slot" and act.target.components.shelfer:GetGift() then
+					local item_name = string.upper(act.target.components.shelfer:GetGift().prefab)
+					wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+				end
+
+				if wantitem then
+					if GetPlayer().components.shopper:IsWatching(act.target) then
+						local payitem = STRINGS.NAMES[string.upper("oinc")]
+						local qty = "1"
+						return GLOBAL.subfmt(STRINGS.ACTIONS.SHOP_LONG, { wantitem = wantitem, qty=qty, payitem = payitem })
+					else								    
+						return GLOBAL.subfmt(STRINGS.ACTIONS.SHOP_TAKE, { wantitem = wantitem })
+					end
+				end
+
+			end
+		end
+	end
+end
 
 
 --Переопределяем функцию, выводящую "Создать ...", когда устанавливается на землю крафт-предмет типа палатки.
@@ -1493,13 +1163,38 @@ local oldSelectPortrait --Старая функция выбора портрета в меню выбора персонажа
 local function newSelectPortrait(self,portrait)
 	oldSelectPortrait(self,portrait) --Запускаем оригинальную функцию
 	if self.heroportait and self.heroportait.texture then
-		local list={["locked"]=1,["wickerbottom"]=1,["waxwell"]=1,["willow"]=1,["wilson"]=1,["woodie"]=1,["wes"]=1,["wolfgang"]=1,["wendy"]=1}
-		if t.ROG_Installed or t.SW_Installed then
+		local list={
+			["locked"]=1,
+			["wickerbottom"]=1,
+			["waxwell"]=1,
+			["willow"]=1,
+			["wilson"]=1,
+			["woodie"]=1,
+			["wes"]=1,
+			["wolfgang"]=1,
+			["wendy"]=1,
+			["wathgrithr"]=1,
+			["webber"]=1,
+			["walani"]=1
+			--["warly"]=1,
+			--["woodlegs"]=1,
+			--["wilbur"]=1,
+			--["warbucks"]=1
+			--["wilba"]=1
+		}
+		if t.ROG_Installed or t.SW_Installed or t.H_Installed then
 			list["wathgrithr"]=1
 			list["webber"]=1
 		end
-		if t.SW_Installed then
+		if t.SW_Installed or t.H_Installed then
 			list["walani"]=1
+			--list["warly"]=1
+			--list["woodlegs"]=1
+			--list["wilbur"]=1
+		end
+		if t.H_Installed then
+			--list["warbucks"]=1
+			--list["wilba"]=1
 		end
 		local name=string.sub(self.heroportait.texture,1,-5)
 		if list[name] then
@@ -1508,7 +1203,6 @@ local function newSelectPortrait(self,portrait)
 	end
 end
 
-
 --Подменяем функцию показа портрета в меню выбора персонажа
 AddClassPostConstruct("screens/characterselectscreen", function(self)
 	oldSelectPortrait=self["SelectPortrait"]
@@ -1516,24 +1210,7 @@ AddClassPostConstruct("screens/characterselectscreen", function(self)
 	self:SelectPortrait(1) --Нужно, чтобы обновить то, что уже успело показаться
 end)
 
---Подменяем заголовок Broadcasting Beta
-if t.ROG_Installed or t.SW_Installed then
-	AddGlobalClassPostConstruct("screens/broadcastingoptionsscreen", "BroadcastingOptionsScreen", function(self)
-		for i,v in pairs(self.root.children) do
-			if v["GetString"] and v:GetString()=="Broadcasting Beta" then v:SetString("Тестовый режим трансляции") end
-		end
--- Двигаем описания вправо
-		if self.grid then for i,v in pairs(self.grid.children) do
-		if type(v)=="table" and v.name=="SpinnerGroup" then
-			for ii,vv in pairs(v.children) do
-				if type(vv)=="table" and vv.name=="Text" then
-					vv:Nudge({x=25,y=0,z=0})
-				end
-			end
-		end
-	end end
-	end)
-end
+
 
 local oldRefreshOptions --Старая функция заполнения опций в меню настроек карты
 local function newRefreshOptions(self) --Новая функция
@@ -1607,9 +1284,7 @@ end)
 
 
 
-
 --Баг с непереводящимися словами Enabled и Disabled в настройках для официальной версии игры
-
 AddClassPostConstruct("screens/optionsscreen", function(self) 
 	for _,v in pairs(self) do
 		if type(v)=="table" and v.name=="SPINNER" then
@@ -1653,6 +1328,8 @@ AddClassPostConstruct("widgets/containerwidget", function(self)
 	end
 	self.Open=newOpen
 end)
+
+
 
 AddClassPostConstruct("widgets/recipepopup", function(self) --Уменьшаем шрифт описания рецепта в попапе рецептов
 	if self.name and self.Refresh then --Перехватываем вывод названия, проверяем, вмещается ли оно, и если нужно, меняем его размер
@@ -1699,36 +1376,42 @@ AddClassPostConstruct("screens/deathscreen", function(self, days_survived)
 	end
 end)]]
 
-	--Чуть-чуть раздвигаем портрет и надпись в меню загрузки игр
-	AddClassPostConstruct("screens/loadgamescreen", function(self)
-		self.oldMakeSaveTile=self.MakeSaveTile
-		local function newMakeSaveTile(self,slotnum)
-			local item=self:oldMakeSaveTile(slotnum)
-			item.portraitbg:SetPosition(-130 + 40, 2, 0)	
-			item.portrait:SetPosition(-130 + 40, 2, 0)	
-			if item.portraitbg.shown then item.text:SetPosition(50,0,0) end
-			return item
-		end
-		self.MakeSaveTile=newMakeSaveTile
-	end)
 
-	--Уменьшаем размер текста в заголовке деталей записи
-	AddClassPostConstruct("screens/slotdetailsscreen", function(self)
-		self.text:SetSize(45)
-	end)
 
-	--Переводим пару строк в окне логина Twitch, которые по какой-то причине не в STRINGS
-	AddClassPostConstruct("screens/broadcastingloginscreen", function(self)
-		if self.title and self.title:GetString()=="Twitch User Name" then
-			self.title:SetString("Имя пользователя в Twitch")
-		end
-		if self.password_title and self.password_title:GetString()=="Twitch Password" then
-			self.password_title:SetString("Пароль в Twitch")
-		end
-	end)
-	
+--Чуть-чуть раздвигаем портрет и надпись в меню загрузки игр
+AddClassPostConstruct("screens/loadgamescreen", function(self)
+	self.oldMakeSaveTile=self.MakeSaveTile
+	local function newMakeSaveTile(self,slotnum)
+		local item=self:oldMakeSaveTile(slotnum)
+		item.portraitbg:SetPosition(-130 + 40, 2, 0)	
+		item.portrait:SetPosition(-130 + 40, 2, 0)	
+		if item.portraitbg.shown then item.text:SetPosition(50,0,0) end
+		return item
+	end
+	self.MakeSaveTile=newMakeSaveTile
+end)
 
-	
+
+
+--Уменьшаем размер текста в заголовке деталей записи
+AddClassPostConstruct("screens/slotdetailsscreen", function(self)
+	self.text:SetSize(45)
+end)
+
+
+
+--Переводим пару строк в окне логина Twitch, которые по какой-то причине не в STRINGS
+AddClassPostConstruct("screens/broadcastingloginscreen", function(self)
+	if self.title and self.title:GetString()=="Twitch User Name" then
+		self.title:SetString("Имя пользователя в Twitch")
+	end
+	if self.password_title and self.password_title:GetString()=="Twitch Password" then
+		self.password_title:SetString("Пароль в Twitch")
+	end
+end)
+
+
+
 --Уменьшаем шрифт в заголовке морга
 AddClassPostConstruct("screens/morguescreen", function(self)
 	if self.obits_titles then
@@ -1767,6 +1450,8 @@ AddClassPostConstruct("screens/morguescreen", function(self)
 	end
 end)
 
+
+
 --Исправляем последовательность слов в заголовке окна настройки модов
 AddClassPostConstruct("screens/modconfigurationscreen", function(self)
 	for title,val in pairs(self.root.children) do
@@ -1777,6 +1462,8 @@ AddClassPostConstruct("screens/modconfigurationscreen", function(self)
 		end
 	end
 end)
+
+
 
 --Подменяем шрифт, потому что тут уже инициализировался английский
 AddClassPostConstruct("widgets/loadingwidget", function(self)
@@ -1804,12 +1491,12 @@ end)
 
 
 
-
 --Исправление бага с шрифтом в спиннерах
 AddClassPostConstruct("widgets/spinner", function(self, options, width, height, textinfo, ...) --Выполняем подмену шрифта в спиннере из-за глупой ошибки разрабов в этом виджете
 	if textinfo then return end
 	self.text:SetFont(GLOBAL.BUTTONFONT)
 end)
+
 
 
 --Для тех, кто пользуется ps4 или NACL должна быть возможность сохранять не в ини файле, а в облаке.
@@ -1832,6 +1519,8 @@ local function GetLocalizaitonValue(self,name) --Метод, возвращающий значение оп
 		return self:GetValue(tostring(name))
 	end
 end
+
+
 
 --Расширяем функционал PlayerProfile дополнительной инициализацией двух методов и заданием дефолтных значений опций нашего перевода.
 AddGlobalClassPostConstruct("playerprofile", "PlayerProfile", function(self)
@@ -1914,7 +1603,9 @@ function AddSettingsButton()
 		end
 	end)
 end
-  
+
+
+
 --Добавление кнопки настроек меню модов при наведении на русский мод
 if GLOBAL.KnownModIndex and GLOBAL.KnownModIndex.HasModConfigurationOptions then
 	local OldHasModConfigurationOptions = GLOBAL.KnownModIndex.HasModConfigurationOptions
@@ -1924,6 +1615,8 @@ if GLOBAL.KnownModIndex and GLOBAL.KnownModIndex.HasModConfigurationOptions then
 		return res
 	end
 end
+
+
 
 --Переопределяем действие кнопки
 AddGlobalClassPostConstruct("screens/modsscreen", "ModsScreen", function(self)
@@ -1985,77 +1678,6 @@ AddGlobalClassPostConstruct("screens/modsscreen", "ModsScreen", function(self)
 end)
 
 
---Загружает главы из нотабеноида
-local function DownloadNotabenoidChapters()
---[[	Временно отключили. Нотабеноид не работает!
-	if GLOBAL.RUN_GLOBAL_INIT then --Должно выполняться только при первой загрузке игры
-		local UpdateRussianDialog = require "screens/UpdateRussianDialog"
-		GLOBAL.TheFrontEnd:PushScreen(UpdateRussianDialog())
-	end
-]]
-end
-
-
-local OldStart = GLOBAL.Start
-function Start() --После выполнения этой функции уже можно показывать диалоги.
-
-
-	AddSettingsButton() --Добавляем кнопку настроек. Должно быть здесь, чтобы не конфликтовало с RPGHud и некоторыми другими модами
-	OldStart() --Сначала запускаем родную функцию
-
-
-	--Если включён один из DLC, то нужно применить русификацию реплик персонажей тут
-	if t.ROG_Installed or t.SW_Installed then
-		GLOBAL.TranslateStringTable(GLOBAL.STRINGS)
-	end
-
-	local a=GLOBAL.Profile:GetLocalizaitonValue("update_is_allowed")
-	
-	if not a or a=="true" or a==true then --Если в ini файле есть запись, позволяющая проверять обновления или её вообще нет
-		local period=GLOBAL.Profile:GetLocalizaitonValue("update_frequency")
-		if not period then --Если нет записи о периоде, то делаем по умолчанию раз в неделю
-			period=GLOBAL.RusUpdatePeriod[3]
-			GLOBAL.Profile:SetLocalizaitonValue("update_frequency",period)
-		end
-		if period==GLOBAL.RusUpdatePeriod[1] then --При каждом запуске
-			DownloadNotabenoidChapters()
-		end
-		if period~=GLOBAL.RusUpdatePeriod[5] then --если не выбрано "никогда не обновлять"
-			local date=GLOBAL.os.date("*t")
-			local date2=GLOBAL.Profile:GetLocalizaitonValue("last_update_date")
-			if date2 then --Получили две даты. Сравниваем в зависимости от установленной частоты обновления
-				date2=string.split(date2,".")
-				if period==GLOBAL.RusUpdatePeriod[2] then --Раз в день
-					if date2[1]~=tostring(date.day) then
-						DownloadNotabenoidChapters()
-					end
-				else
-					local a=28
-					if date.year%4==0 then a=29 end
-					local DaystoMonth={0,31,31+a,31+a+31,31+a+31+30,31+a+31+30+31,31+a+31+30+31+30,31+a+31+30+31+30+31,31+a+31+30+31+30+31+31,31+a+31+30+31+30+31+31+30,31+a+31+30+31+30+31+31+30+31,31+a+31+30+31+30+31+31+30+31+30}
-					local DaysperMonth={31,a,31,30,31,30,31,31,30,31,30,31}
-					local datedaysum=tonumber(date.year)*365+DaystoMonth[tonumber(date.month)]+tonumber(date.day)
-					local date2daysum=tonumber(date2[3])*365+DaystoMonth[tonumber(date2[2])]+tonumber(date2[1])
-					if period==GLOBAL.RusUpdatePeriod[3] then --Раз в неделю
-						if datedaysum-7>=date2daysum then
-							DownloadNotabenoidChapters()
-						end
-					elseif period==GLOBAL.RusUpdatePeriod[4] then --Раз в месяц
-						if datedaysum-DaysperMonth[tonumber(date2[2])]>=date2daysum then
-							DownloadNotabenoidChapters()
-						end
-					end
-				
-				end
-			else --Нет записи о дате. Значит это скорее всего первое обновление.
-				DownloadNotabenoidChapters() 
-			end
-		end
-	end
-end
-GLOBAL.Start=Start
-
-
 
 --Перехватываем функцию закрытия игры для записи в ини файл данных о том, что можно обновляться
 local oldshutdown=GLOBAL.Shutdown
@@ -2064,13 +1686,6 @@ function newShutdown()
 	oldshutdown()
 end
 GLOBAL.Shutdown=newShutdown
-
-
-
-
-
-
-
 
 
 
@@ -2108,9 +1723,6 @@ else --Иначе извращаемся, как обычно.
 		return old_RunInEnvironment(fn, env, ...)
     end
 end
-
-
-
 
 
 
@@ -2162,4 +1774,3 @@ function GLOBAL.RegisterRussianName(key,val,gender,walkto,defaultaction,capitali
 	end
 	if capitalized then t.ShouldBeCapped[string.lower(key)]=true end
 end
-

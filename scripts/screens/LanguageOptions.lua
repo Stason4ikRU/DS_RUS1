@@ -1,4 +1,4 @@
-local t = mods.RussianLanguagePack
+local t = mods.RussianLang
 
 
 require("constants")
@@ -8,7 +8,7 @@ local ImageButton = require "widgets/imagebutton"
 local Spinner = require "widgets/spinner"
 local Text = require "widgets/text"
 local Image = require "widgets/image"
-local UpdateRussianDialog = require "screens/UpdateRussianDialog"
+--local UpdateRussianDialog = require "screens/UpdateRussianDialog"
 
 local TranslationTypeSave=nil
 
@@ -78,13 +78,13 @@ local LanguageOptions = Class(Screen, function(self)
 		self:ChangeLogRecord(0)
 		self:UpdatePageNumbers()
 	end
-
+--[[
 	self.UpdateNowButton:SetOnClick( function()
 		TheFrontEnd:PushScreen(UpdateRussianDialog(UpdateLogonupdate,true))
 	end )
 	self.UpdateNowButton:SetFont(BUTTONFONT)
 	self.UpdateNowButton:SetTextSize(36)
-
+]]
 	self.OldLogRecord=nil
 	self.Oldlogpage=nil
 	self.HistoryButton = self.root:AddChild(ImageButton("images/ui.xml", "button_long.tex", "button_long_over.tex", "button_long_disabled.tex"))

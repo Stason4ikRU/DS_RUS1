@@ -1,0 +1,1208 @@
+# ---------------------------------------------------------------------------- Должны начинаться с заглавной буквы
+#BERNIE_INACTIVE
+#BERNIE_ACTIVE
+#ABIGAIL
+#WATHGRITHR
+#WEBBER
+#WILSON
+#PUPPET_WOODIE
+#ORANGESTAFF
+#PUPPET_WOLFGANG
+#PUPPET_WICKERBOTTOM
+#WICKERBOTTOM
+#CHESTER
+#PUPPET_MAXWELL
+#NIGHTMARELIGHT
+#PUPPET_WX78
+#BOOK_BRIMSTONE
+#WALRUS
+#DRAGONFLY
+#MAXWELLTHRONE
+#MAXWELLENDGAME
+#STAFFLIGHT
+#PUPPET_WAXWELL
+#PUPPET_WATHGRITHR
+#PUPPET_WEBBER
+#DEFAULT
+#PUPPET_WILSON
+#GLOMMER
+#WES
+#WILLOW
+#DEERCLOPS
+#ABIGAIL
+#WOLFGANG
+#BEARGER
+#LITTLE_WALRUS
+#WOODIE
+#LUCY
+#WX78
+#BOOK_TENTACLES
+#MAXWELL
+#WAXWELLJOURNAL
+#KRAMPUS
+#BOOK_GARDENING
+#MAXWELLLOCK
+#BOOK_BIRDS
+#WENDY
+#TRINKET_3
+#RESEARCHLAB4
+#ORANGEAMULET
+#PUPPET_WILLOW
+#PUPPET_WENDY
+#BOOK_SLEEP
+#LOCKEDWES
+#PUPPET_WES
+#MOOSE
+#YELLOWAMULET
+#PIGMAN_BEAUTICIAN
+#PIGMAN_FLORIST
+#PIGMAN_ERUDITE
+#PIGMAN_HATMAKER
+#PIGMAN_STOREOWNER
+#PIGMAN_BANKER
+#PIGMAN_COLLECTOR
+#PIGMAN_HUNTER
+#PIGMAN_MAYOR
+#PIGMAN_MECHANIC
+#PIGMAN_PROFESSOR
+#PIGMAN_USHER
+#PIGMAN_ROYALGUARD
+#PIGMAN_ROYALGUARD_2
+#PIGMAN_FARMER
+#PIGMAN_MINER
+#PIGMAN_QUEEN
+#PIGMAN_BEAUTICIAN_SHOPKEEP
+#PIGMAN_FLORIST_SHOPKEEP
+#PIGMAN_ERUDITE_SHOPKEEP
+#PIGMAN_HATMAKER_SHOPKEEP
+#PIGMAN_STOREOWNER_SHOPKEEP
+#PIGMAN_BANKER_SHOPKEEP
+#PIGMAN_SHOPKEEP
+#PIGMAN_HUNTER_SHOPKEEP
+#PIGMAN_MAYOR_SHOPKEEP
+#PIGMAN_FARMER_SHOPKEEP
+#PIGMAN_MINER_SHOPKEEP
+#PIGMAN_COLLECTOR_SHOPKEEP
+#PIGMAN_PROFESSOR_SHOPKEEP
+--- CAPY DLC
+#PACKIM
+#OCTOPUSKING
+#WALANI
+#WOODLEGS
+#BOAT_INDICATOR
+#VOLLEYBALL
+#TWISTER
+#KRAKEN
+
+
+
+
+# ------------------------------------------------------------------------------ Род и число предметов
+
+# МУЖСКОЙ:
+
+# МУЖСКОЙ 2 КЛАСС:
+#WEBBER
+#BERNIE_INACTIVE
+#BERNIE_ACTIVE
+#WILSON
+#ORANGESTAFF
+#BEARGER
+#CHESTER
+#MOLE
+#CHARLIE
+#EYETURRET
+#SPIDER
+#WALRUS
+#MOSQUITO
+#MINOTAUR
+#SPIDER_SPITTER
+#FLOWER_EVIL
+#TRINKET_4
+#WOLFGANG
+#KNIGHT
+#MOOSE2
+#SPIDER_DROPPER
+#KOALEFANT_SUMMER
+#MOOSE1
+#SLURPER
+#WARG
+#CROW
+#EEL
+#TERRORBEAK
+#SPIDER_HIDER
+#BAT
+#PERD
+#BABYBEEFALO
+#BIRCHNUTDRAKE
+#LEIF_SPARSE
+#ORANGEAMULET
+#TRINKET_11
+#BUZZARD
+#WES
+#MOLE_ABOVEGROUND
+#LITTLE_WALRUS
+#GLOMMER
+#BEEFALO
+#NIGHTMAREBEAK
+#ROCKY
+#GHOST
+#SPIDER_WARRIOR
+#WOODIE
+#CATCOON
+#EYETURRET_ITEM
+#KOALEFANT_WINTER
+#MAXWELL
+#LOCKEDWES
+#KRAMPUS
+#PIGGUARD
+#DEERCLOPS
+#EEL_COOKED
+#ONEMANBAND
+#WORM
+#TEAMLEADER
+#PIGKING
+#RABBIT
+#PIGMAN
+#WX78
+#MERM
+#MOSSLING
+#BUNNYMAN
+#LEIF
+--- CAPY DLC
+#GHOST_SAILOR
+#PRIMEAPE
+#WILDBORE
+#WILDBOREGUARD
+#DOYDOYBABY
+#DOYDOYTEEN
+#TREEGUARD
+#CRAB
+#PEACOCK
+#OX
+#BABYOX
+#TOUCAN
+#PARROT
+#TUNACAN
+#LOBSTER
+#LOBSTER_DEAD
+#LOBSTER_DEAD_COOKED
+#BALLPHIN
+#WHALE_BLUE
+#WHALE_WHITE
+#STUNGRAY
+#PACKIM
+#FLUP
+#OCTOPUSKING
+#KNIGHTBOAT
+#BLOWDART_FLUP
+#MOSQUITO_POISON
+#MERMFISHER
+#SHARKITTEN
+#RAWLING
+#TWISTER_SEAL
+#KRAKEN
+
+
+
+
+# ЖЕНСКИЙ:
+#WATHGRITHR
+#LAVAE
+#LAVAE_PET
+#LAVA_POND
+#BIGFOOT
+#STEELWOOL
+#SPAT
+#LIFEINJECTOR
+#WALL_MOONROCK
+#WALL_MOONROCK_ITEM
+#HUMANMEAT_DRIED
+#HUMANMEAT_COOKED
+#HUMANMEAT
+#TRINKET_8
+#ARMORRUINS
+#GOLDENPICKAXE
+#MONSTERLASAGNA
+#BATBAT
+#TRUNKVEST_WINTER
+#LUCY
+#TURF_ROAD
+#ARMORDRAGONFLY
+#DRAGONFRUIT_COOKED
+#WALL_RUINS_ITEM
+#WALRUS_CAMP
+#WALL_HAY_ITEM
+#STATUEHARP
+#RESEARCHLAB2
+#BOOK_TENTACLES
+#DIVININGRODBASE
+#HAMBAT
+#PIGSKIN
+#PENGUIN
+#TEENBIRD
+#BEEFALOWOOL
+#RABBITHOUSE
+#TAFFY
+#RUINS_RUBBLE
+#CAVE_ENTRANCE_OPEN
+#BOOK_SLEEP
+#TRUNKVEST_SUMMER
+#SPIDERQUEEN
+#SHOVEL
+#DIRTPILE
+#WENDY
+#BIRD_EGG_COOKED
+#CARROT_COOKED
+#ROOK
+#ARMORGRASS
+#DARKNESS
+#CUTGRASS
+#ROBIN_WINTER
+#MINERHAT
+#MOUND
+#INVENTORYMOUND
+#FEATHERHAT
+#BEE
+#STAFFLIGHT
+#TRINKET_10
+#HOUND
+#BALLOONS_EMPTY
+#STATUEMAXWELL
+#KILLERBEE
+#ROOK_NIGHTMARE
+#BOOK_GARDENING
+#RUINSHAT
+#WALL_HAY
+#PINECONE
+#BEEMINE
+#JAMMYPRESERVES
+#ABIGAIL
+#WORMLIGHT
+#HAWAIIANSHIRT
+#TELEPORTATO_BOX
+#MONKEY
+#FIRESUPPRESSOR
+#DRAGONFRUIT
+#FISH
+#NIL
+#SUNKBOAT
+#ADVENTURE_PORTAL
+#TRANSISTOR
+#SILK
+#ARMORMARBLE
+#WX78
+#DIVININGRODSTART
+#RUINS_BAT
+#COOKEDMANDRAKE
+#LAVASPIT
+#DECIDUOUS_ROOT
+#CAVE_ENTRANCE_CLOSED
+#TRAP_TEETH
+#TELEPORTATO_BASE
+#CACTUS_MEAT
+#WALL_STONE
+#TURKEYDINNER
+#RABBITHOLE
+#SPIDERHAT
+#ARMOR_SANITY
+#ICEHOUND
+#SPOILED_FOOD
+#WORMHOLE
+#BEEFALOHAT
+#WALL_WOOD_ITEM
+#DRAGON_SCALES
+#SMALLBIRD
+#TELEPORTATO_CHECKMATE
+#TENT
+#CATCOONHAT
+#DECIDUOUSTREE
+#WALL_RUINS
+#FROG
+#ROPE
+#BONESTEW
+#WORMHOLE_LIMITED_1
+#TALLBIRD
+#BUSHHAT
+#MOLEHILL
+#MARBLEPILLAR
+#SLURPER_PELT
+#TELEPORTATO_POTATO
+#LUREPLANTBULB
+#CARROT_PLANTED
+#STATUEGLOMMER
+#BASALT_PILLAR
+#BIRDTRAP
+#MERMHEAD
+#CAVE_ENTRANCE_CLOSED_CAVE
+#CAVE_EXIT
+#BEARGER_FUR
+#WALL_STONE_ITEM
+#FAST_FARMPLOT
+#FIREHOUND
+#GRASS
+#SLURTLESLIME
+#SPIDERGLAND
+#PIGHEAD
+#FOLIAGE
+#PICKAXE
+#WICKERBOTTOM
+#MAXWELLHEAD
+#WALL_WOOD
+#LIGHTNING
+#PUMPKIN_COOKED
+#BEEHAT
+#EVERGREEN
+#WETGOOP
+#LIGHTER
+#BOOK_BRIMSTONE
+#ANCIENT_ALTAR
+#CORN
+#PUMPKIN
+#FISHINGROD
+#NITRE
+#BEEMINE_MAXWELL
+#HOMESIGN
+#GLOMMERFUEL
+#TRAP
+#RAINHAT
+#WINTERHAT
+#RESURRECTION_PENALTY
+#BATCAVE
+#MEATRACK
+#FISH_COOKED
+#ROBIN
+#GOLDENSHOVEL
+#LIGHTNINGGOAT
+#HEALINGSALVE
+#DEPLETED_GRASS
+#WILLOW
+#SLURTLE
+#STRAWHAT
+#SNURTLE
+#ARMORWOOD
+#GEMSOCKET
+#ANCIENT_STATUE
+#SHADOWWAXWELL
+#WORM_DIRT
+#DRAGONFLY
+#ANCIENT_ALTAR_BROKEN
+#RAZOR
+#MANDRAKE
+#MANDRAKE_ACTIVE
+#MANDRAKE_PLANTED
+#CARROT
+#TRINKET_5
+#RESEARCHLAB
+#BOOK_BIRDS
+#CACTUS_MEAT_COOKED
+#BUTTERFLY
+#TRAP_TEETH_MAXWELL
+#SLOW_FARMPLOT
+#TURF_DIRT
+#CANE
+#BIRDCAGE
+#LIGHTBULB
+#RELIC
+#PANFLUTE
+#EVERGREEN_SPARSE
+--- CAPY DLC
+#HAIL_ICE
+#BUGNET
+#MERMHOUSE
+#BOOK_METEOR
+#TROPICAL_FISH
+#SPOILED_FISH
+#TRINKET_14
+#TRINKET_18
+#TRINKET_19
+#TRINKET_21
+#TRINKET_22
+#SUNKEN_BOAT_TRINKET_2
+#SUNKEN_BOAT_TRINKET_3
+#SUNKEN_BOAT
+#PRIMEAPEBARREL
+#WOODLEGS_CAGE
+#DOYDOY
+#GRASS_WATER
+#PEG_LEG
+#VINE
+#ROWBOAT
+#ARMOUREDBOAT
+#SURFBOARD
+#SURFBOARD_ITEM
+#SEASHELL
+#SEASHELL_BEACHED
+#PALMTREE
+#MUSSEL
+#MUSSEL_COOKED
+#MUSSEL_STICK
+#MESSAGEBOTTLEEMPTY
+#TELESCOPE
+#SUPERTELESCOPE
+#SANDHILL
+#CRABHOLE
+#JUNGLE_TREE_SEED
+#COCONADE
+#OBSIDIANCOCONADE
+#SEAGULL
+#SEAGULL_WATER
+#SEATRAP
+#SNAKE
+#SNAKE_POISON
+#VENOMGLAND
+#ARMOROBSIDIAN
+#CAPTAINHAT
+#PIRATEHAT
+#WORNPIRATEHAT
+#AERODYNAMICHAT
+#JELLYFISH
+#JELLYFISH_PLANTED
+#JELLYFISH_DEAD
+#JELLYFISH_COOKED
+#JELLYJERKY
+#ARMOR_SNAKESKIN
+#SNAKESKINHAT
+#SNAKESKIN
+#BIGFISHINGROD
+#REDBARREL
+#EARRING
+#CUTLASS
+#FABRIC
+#ARMORSEASHELL
+#SPICEPACK
+#MAILPACK
+#FISH_RAW
+#FISH_MED
+#CARGOBOAT
+#TRAWLNET
+#TRAWLNETDROPPED
+#BOATCANNON
+#ARMORLIMESTONE
+#WALL_LIMESTONE
+#WALL_LIMESTONE_ITEM
+#SOLOFISH
+#ARMOR_WINDBREAKER
+#SWORDFISH
+#DEAD_SWORDFISH
+#BIOLUMINESCENCE
+#TIGERSHARK
+#PACKIM_FISHBONE
+#SHARX
+#FROG_POISON
+#MAGMAROCK
+#MAGMAROCK_GOLD
+#CORAL_BRAIN
+#BRAINJELLYHAT
+#EUREKAHAT
+#TELEPORTATO_SW_POTATO
+#TELEPORTATO_SW_BASE
+#TELEPORTATO_SW_CHECKMATE
+#WALLYINTRO
+#MERMHOUSE_FISHER
+#SHARK_TEETHHAT
+#WILDBOREHEAD
+#DRAGOONSPIT
+#ARMORCACTUS
+#MUSSELBOUILLABAISE
+#SHARKITTENSPAWNER_INACTIVE
+#WILBUR_UNLOCK
+#WILBUR_CROWN
+#MAGIC_SEAL
+#WIND_CONCH
+#INVENTORYWATERYGRAVE
+#WOODLEGSHAT
+#OX_FLUTE
+
+
+
+
+# СРЕДНИЙ:
+#LAVAE_EGG
+#LAVAE_EGG_CRACKED
+#MEAT_DRIED
+#REVIVER
+#MUSHTREE_MEDIUM
+#LOG
+#TENTACLE
+#BATWING
+#RESURRECTIONSTATUE
+#MOOSENEST2
+#GRAVESTONE
+#INVENTORYGRAVE
+#CAVE_BANANA_TREE
+#MARSH_PLANT
+#MOOSEEGG2
+#PLANT_NORMAL
+#TALLBIRDEGG
+#FIREPIT
+#TUMBLEWEED
+#EAT_DRIED
+#SPEAR
+#MOOSEEGG1
+#TENTACLE_PILLAR_ARM
+#TELEPORTATO_RING
+#TRINKET_7
+#GOATMILK
+#BIRD_EGG
+#MUSHTREE_SMALL
+#RAIN
+#MARSH_TREE
+#COOKEDMONSTERMEAT
+#BATWING_COOKED
+#FEATHER_ROBIN_WINTER
+#WATER
+#LIVINGLOG
+#TALLBIRDNEST
+#PUMPKINCOOKIE
+#WORM_PLANT
+#PLANTMEAT_COOKED
+#LIVINGTREE
+#FERTILIZER
+#COOKEDMEAT
+#SHENANIGANS
+#MONSTERMEAT_DRIED
+#TRINKET_12
+#MARBLETREE
+#TENTACLE_GARDEN
+#ROTTENEGG
+#MUSHTREE_TALL
+#COLDFIREPIT
+#MONSTERMEAT
+#ICECREAM
+#DEADLYFEAST
+#MEAT
+#MOOSENEST1
+#PLANTMEAT
+#TALLBIRDEGG_CRACKED
+#FEATHER_CROW
+#GUACAMOLE
+#FEATHER_ROBIN
+#BUTTER
+#SPEAR_WATHGRITHR
+#NIGHTMAREFUEL
+#GUANO
+#TENTACLE_PILLAR
+#MOSQUITOSACK
+#GOOSE_FEATHER
+#UNKNOWN
+#TALLBIRDEGG_COOKED
+#STINGER
+--- CAPY DLC
+#TRINKET_15
+#TRINKET_23
+#DOYDOYEGG
+#DOYDOYEGG_CRACKED
+#DOYDOYEGG_COOKED
+#DOYDOYNEST
+#DOYDOYFEATHER
+#MESSAGEBOTTLE
+#BURIEDTREASURE
+#MACHETE
+#GOLDENMACHETE
+#JUNGLETREE
+#BANANA_TREE
+#LOBSTERHOLE
+#WHALE_CARCASS_BLUE
+#WHALE_CARCASS_WHITE
+#ANTIVENOM
+#SPEAR_POISON
+#OBSIDIANMACHETE
+#OBSIDIANSPEARGUN
+#SPEAR_OBSIDIAN
+#SPEARGUN
+#SPEARGUN_POISON
+#OBSIDIANFIREPIT
+#COFFEE
+#SEAFOODGUMBO
+#CEVICHE
+#SURFNTURF
+#SNAKEOIL
+#MYSTERYMEAT
+#MANGROVETREE
+#TIDAL_PLANT
+#TELEPORTATO_SW_RING
+#LIVINGJUNGLETREE
+#MOSQUITOSACK_YELLOW
+#MARSH_PLANT_TROPICAL
+#DRAGOONEGG
+#DRAGOONDEN
+#DRAGOONHEART
+#SWEETPOTATOSOUFFLE
+#VOLCANO_SHRUB
+#SHARKITTENSPAWNER_ACTIVE
+#TWISTER
+#WRECK
+#KRAKEN_TENTACLE
+#SPEAR_LAUNCHER
+
+
+
+
+# МНОЖЕСТВЕННОЕ ЧИСЛО:
+#PHLEGM
+#BUTTERFLYWINGS
+#PETALS_EVIL
+#CHESSJUNK3
+#EARMUFFSHAT
+#FROGLEGS_COOKED
+#CHESSJUNK1
+#WATERMELON_SEEDS
+#POND_ALGAE
+#POMEGRANATE_SEEDS
+#SPIDEREGGSACK
+#TWIGS
+#GEARS
+#THULECITE_PIECES
+#PITCHFORK
+#DRAGONFRUIT_SEEDS
+#FISHTACOS
+#PETALS
+#CHESSJUNK2
+#TENTACLESPIKE
+#CORN_SEEDS
+#WAFFLES
+#SEEDS_COOKED
+#HOUNDBONE
+#EGGPLANT_SEEDS
+#BERRIES
+#BACONEGGS
+#TRINKET_6
+#GOLDENPITCHFORK
+#BONESHARD
+#TRINKET_9
+#MOLEHAT
+#CARROT_SEEDS
+#ROCKS
+#FISHSTICKS
+#SEEDS
+#HONEYCOMB
+#MEATBALLS
+#PUMPKIN_SEEDS
+#BOARDS
+#UNAGI
+#TRINKET_1
+#DURIAN_SEEDS
+#BERRIES_COOKED
+#PEROGIES
+#FIREFLIES
+#KABOBS
+#HONEYNUGGETS
+#GLOMMERWINGS
+#FROGLEGS
+--- CAPY DLC
+#FLOTSAM
+#BAMBOOTREE
+#MUSSEL_FARM
+#DUBLOON
+#SEAWEED
+#SEAWEED_COOKED
+#SEAWEED_PLANTED
+#SEAWEED_DRIED
+#LIMPETS
+#LIMPETS_COOKED
+#SWEET_POTATO_SEEDS
+#WHALE_BUBBLES
+#COFFEEBEANS
+#COFFEEBEANS_COOKED
+#CALIFORNIAROLL
+#SHARK_GILLS
+#TURBINE_BLADES
+#WALLYINTRO_DEBRIS
+#FRESHFRUITCREPES
+#WRECKOF
+
+
+
+# ------------------------------------------------------------------------------ Действие talkto
+
+#Говорить с Максвеллом					Максвелл					MAXWELL
+
+
+
+# ------------------------------------------------------------------------------ Действие pick
+
+#Собрать Ягоды с куста								Ягодный куст			BERRYBUSH
+#Собрать Ягоды с куста								Ягодный куст			BERRYBUSH2
+#Собрать Лепестки с цветка							Цветок					FLOWER
+#Собрать Ветки с саженца							Саженец					SAPLING
+--- CAPY DLC
+#Собрать Блюдечки с прибрежного камня				Прибрежный камень		LIMPETROCK
+#Собрать Ягоды с куста								Ягодный куст			BERRYBUSH_SNAKE
+#Собрать Ягоды с куста								Ягодный куст			BERRYBUSH2_SNAKE
+#Собрать Морские блюдечки с затонувшего судна		Затонувшее судно		WRECK
+#Собрать Морские блюдечки с обломков «%s»			Обломки «%s»			WRECKOF
+#Собрать Зёрна с кофейного куста					Кофейный куст			COFFEEBUSH
+
+
+
+# ------------------------------------------------------------------------------ Действие pickup
+
+#Поднять панцирь жука-полёвки				Панцирь жука-полёвки			WEEVOLE_CARAPACE
+
+
+
+# ------------------------------------------------------------------------------ Действие harvest
+
+#Достать Еду из казана					Казан						COOKPOT
+#Достать Птицу из клетки				Птичья клетка				BIRDCAGE
+#Достать Мёд из улья					Улей						BEEBOX
+#Достать Мясо из сушилки				Сушилка						MEATRACK
+
+
+
+# ------------------------------------------------------------------------------ Действие defaultaction
+
+#Изучить Гончиуса стрелятиуса			Гончиус стрелятиус				EYETURRET
+#Изучить Гончиуса стрелятиуса			Гончиус стрелятиус				EYETURRET_ITEM
+#Изучить Голову свина					Голова свина					PIGHEAD
+#Изучить Дом свина						Дом свина						PIGHOUSE
+#Изучить Уилсона П. Хиггсбери			Уилсон П. Хиггсбери				OTHER
+#Изучить Неизвестного					Неизвестный						OTHER
+#Изучить Дверь Максвелла				Дверь Максвелла					ADVENTURE_PORTAL
+#Изучить Кролика						Кролик							RABBIT
+#Изучить Семена дуриана					Семена дуриана					DURIAN_SEEDS
+#Изучить Свина							Свин							PIGMAN
+#Изучить Мэрма							Мэрм							MERM
+#Изучить Рог стража						Рог стража						MINOTAURHORN
+#Изучить Угря							Угорь							EEL
+#Изучить Приготовленный кусочек мяса	Приготовленный кусочек мяса		COOKEDSMALLMEAT
+#Изучить Унаги							Унаги							UNAGI
+#Изучить Статую арфиста					Статуя арфиста					STATUEHARP
+#Изучить Страхоклюва					Страхоклюв						NIGHTMAREBEAK
+#Изучить Посох разрушения				Посох разрушения				GREENSTAFF
+#Изучить Ловушку для птиц				Ловушка для птиц				BIRDTRAP
+#Изучить Ленивого исследователя			Ленивый исследователь			ORANGESTAFF
+#Изучить Глубинного паука				Глубинный паук					SPIDER_DROPPER
+#Изучить Паучьи яйца					Паучьи яйца						SPIDEREGGSACK
+#Изучить Светильник Джека				Светильник Джека				PUMPKIN_LANTERN
+#Изучить Паука							Паук							SPIDER
+#Изучить Повреждённого слона			Повреждённый слон				BISHOP_NIGHTMARE
+#Изучить Ловушку Максвелла				Ловушка Максвелла				TRAP_TEETH_MAXWELL
+#Изучить Семена							Семена							SEEDS
+#Изучить Хижину зайца					Хижина зайца					RABBITHOUSE
+#Изучить Шкуру проглота					Шкура проглота					SLURPER_PELT
+#Изучить Пещерного паука				Пещерный паук					SPIDER_HIDER
+#Изучить Жареные семена					Жареные семена					SEEDS_COOKED
+#Изучить Семена моркови					Семена моркови					CARROT_SEEDS
+#Изучить Мясо монстра					Мясо монстра					MONSTERMEAT
+#Изучить Горсть джема					Горсть джема					JAMMYPRESERVES
+#Изучить Набор для шитья				Набор для шитья					SEWING_KIT
+#Изучить Цветок света					Цветок света					FLOWER_CAVE_DOUBLE
+#Изучить Цветок света					Цветок света					FLOWER_CAVE
+#Изучить Светлячков						Светлячки						FIREFLIES
+#Изучить Приготовленное крыло мышелиска		Приготовленное крыло мышелиска		BATWING_COOKED
+#Изучить Крыло мышелиска				Крыло мышелиска					BATWING
+#Изучить Семена граната					Семена граната					POMEGRANATE_SEEDS
+#Изучить Мышелиска						Мышелиск						BAT
+#Изучить Мешок Крампуса					Мешок Крампуса					KRAMPUS_SACK
+#Изучить Топливо ужаса					Топливо ужаса					NIGHTMAREFUEL
+#Изучить Подставку для жезла			Подставка для жезла				DIVININGRODSTART
+#Изучить Подставку для жезла			Подставка для жезла				DIVININGRODBASE
+#Изучить Жезл поиска					Жезл поиска						DIVININGROD
+#Изучить Древнего стража				Древний страж					MINOTAUR
+#Изучить Голову Максвелла				Голова Максвелла				MAXWELLHEAD
+#Изучить Цветок света					Цветок света					FLOWER_CAVE_TRIPLE
+#Изучить Приготовленное мясо монстра	Приготовленное мясо монстра		COOKEDMONSTERMEAT
+#Изучить Лгущего робота					Лгущий робот					TRINKET_11
+#Изучить Статую Максвелла				Статуя Максвелла				STATUEMAXWELL
+#Изучить Крампуса						Крампус							KRAMPUS
+#Изучить Повреждённого коня				Повреждённый конь				KNIGHT_NIGHTMARE
+#Изучить Глаз циклопа-оленя				Глаз циклопа-оленя				DEERCLOPS_EYEBALL
+#Изучить Уилсона						Уилсон							WILSON
+#Изучить Посох призывателя звёзд		Посох призывателя звёзд			YELLOWSTAFF
+#Изучить Циклопа-оленя					Циклоп-олень					DEERCLOPS
+#Изучить Страхоклюва					Страхоклюв						TERRORBEAK
+#Изучить Стейк из хобота коалослона		Стейк из хобота коалослона		TRUNK_COOKED
+#Изучить Семена питайи					Семена питайи					DRAGONFRUIT_SEEDS
+#Изучить Утеплённый хобот коалослона	Утеплённый хобот коалослона		TRUNK_WINTER
+#Изучить Флейту Пана					Флейта Пана						PANFLUTE
+#Изучить Хобот коалослона				Хобот коалослона				TRUNK_SUMMER
+#Изучить Инструмент разработчика		Инструмент разработчика			DEVTOOL
+#Изучить Москитную ловушку Максвелла	Москитная ловушка Максвелла		BEEMINE_MAXWELL
+#Изучить Детёныша бифало				Детёныш бифало					BABYBEEFALO
+#Изучить Пояс голода					Пояс голода						ARMORSLURPER
+#Изучить Кусочек щупальца				Кусочек щупальца				TENTACLESPOTS
+#Изучить Индюка							Индюк							PERD
+#Изучить Амулет строительства			Амулет строительства			GREENAMULET
+#Изучить Вольфганга						Вольфганг						WOLFGANG
+#Изучить Ленивого собирателя			Ленивый собиратель				ORANGEAMULET
+#Изучить Яйца с беконом					Яйца с беконом					BACONEGGS
+#Изучить Каменного лобстера				Каменный лобстер				ROCKY
+#Изучить Механического коня				Механический конь				KNIGHT
+#Изучить Механического слона			Механический слон				BISHOP
+#Изучить Энта							Энт								LEIF_SPARSE
+#Изучить Энта							Энт								LEIF
+#Изучить Огонь Максвелла				Огонь Максвелла					MAXWELLLIGHT
+#Изучить Изодранные провода				Изодранные провода				TRINKET_6
+#Изучить Гнома							Гном							TRINKET_4
+#Изучить Короля свиней					Король свиней					PIGKING
+#Изучить Человека-оркестр				Человек-оркестр					ONEMANBAND
+#Изучить Честера						Честер							CHESTER
+#Изучить Призрака						Призрак							GHOST
+#Изучить Голову мэрма					Голова мэрма					MERMHEAD
+#Изучить Шляпу пчеловода				Шляпа пчеловода					BEEHAT
+#Изучить Комара							Комар							MOSQUITO
+#Изучить Вяленый кусочек мяса			Вяленый кусочек мяса			SMALLMEAT_DRIED
+#Изучить Коалослона						Коалослон						KOALEFANT_WINTER
+#Изучить Граммофон Максвелла			Граммофон Максвелла				MAXWELLPHONOGRAPH
+#Изучить Семена кукурузы				Семена кукурузы					CORN_SEEDS
+#Изучить Шипы щупальца					Шипы щупальца					TENTACLESPIKE
+#Изучить Семена баклажана				Семена баклажана				EGGPLANT_SEEDS
+#Изучить Вяленое мясо монстра			Вяленое мясо монстра			MONSTERMEAT_DRIED
+#Изучить Плевуна						Плевун							SPIDER_SPITTER
+#Изучить Паука-воина					Паук-воин						SPIDER_WARRIOR
+#Изучить Крылья бабочки					Крылья бабочки					BUTTERFLYWINGS
+#Изучить Максвелла						Максвелл						MAXWELL
+#Изучить Кусочек мяса					Кусочек мяса					SMALLMEAT
+#Изучить Зайца							Заяц							BUNNYMAN
+#Изучить Свина-стража					Свин-страж						PIGGUARD
+#Изучить Кодекс Умбра					Кодекс Умбра					WAXWELLJOURNAL
+#Изучить Болезнь перерождения			Болезнь перерождения			RESURRECTION_PENALTY
+#Изучить Брюшко комара					Брюшко комара					MOSQUITOSACK
+#Изучить Глубинного червя				Глубинный червь					WORM
+#Изучить Лидера группы					Лидер группы					TEAMLEADER
+#Изучить Ворона							Ворон							CROW
+#Изучить книгу «Сказки на ночь»			Сказки на ночь					BOOK_SLEEP
+#Изучить книгу «Конец близок!»			Конец близок!					BOOK_BRIMSTONE
+#Изучить книгу «О щупальцах»			О щупальцах						BOOK_TENTACLES
+#Изучить книгу «Практическое садоводство»		Практическое садоводство		BOOK_GARDENING
+#Изучить книгу «Птицы всего мира»		Птицы всего мира				BOOK_BIRDS
+#Изучить Семена арбуза					Семена арбуза					WATERMELON_SEEDS
+#Изучить Навес для сиесты				Навес для сиесты				SIESTAHUT
+#Изучить Медведя-барсука				Медведь-барсук					BEARGER
+#Изучить Бигфута						Бигфут							BIGFOOT
+#Изучить Лося							Лось							MOOSE1
+#Изучить Гуся							Гусь							MOOSE2
+#Изучить Лусёнка						Лусёнок							MOSSLING
+#Изучить Лиственного бесёныша			Лиственный бесёныш				BIRCHNUTDRAKE
+#Изучить Гломмера						Гломмер							GLOMMER
+#Изучить Цветок гломмера				Цветок гломмера					GLOMMERFLOWER
+#Изучить Крылья гломмера				Крылья гломмера					GLOMMERWINGS
+#Изучить Слизь гломмера					Слизь гломмера					GLOMMERFUEL
+#Изучить Статую гломмера				Статуя гломмера					STATUEGLOMMER
+#Изучить Мякоть кактуса					Мякоть кактуса					CACTUS_MEAT
+#Изучить Канюка							Канюк							BUZZARD
+#Изучить Кроточервя						Кроточервь						MOLE_ABOVEGROUND
+#Изучить Кроточервя						Кроточервь						MOLE
+#Изучить Приготовленную мякоть кактуса		Приготовленная мякоть кактуса		CACTUS_MEAT_COOKED
+#Изучить Череп Веббера					Череп Веббера					WEBBERSKULL
+#Изучить Енотокота						Енотокот						CATCOON
+#Изучить Варга							Варг							WARG
+#Изучить Стену из лунного камня			Стена из лунного камня			WALL_MOONROCK_ITEM
+#Изучить Стену из лунного камня			Стена из лунного камня			WALL_MOONROCK
+#Изучить Вэса							Вэс								WES
+#Изучить Веббера						Веббер							WEBBER
+#Изучить Пучок меха						Пучок меха						FURTUFT
+#Изучить Хвост енотокота				Хвост енотокота					COONTAIL
+--- CAPY DLC
+#Изучить Хижину мэрма						Хижина мэрма						MERMHOUSE
+#Изучить книгу «Прелести вулканологии»		Прелести вулканологии				BOOK_METEOR
+#Изучить Дёрн приливного болота				Дёрн приливного болота				TURF_TIDALMARSH
+#Изучить Призрак моряка						Призрак моряка						GHOST_SAILOR
+#Изучить Таблетку от облака мозга			Таблетка от облака мозга			TRINKET_19
+#Изучить Свечку из бутылки от вина			Свечка из бутылки от вина			TRINKET_22
+#Изучить Плутоватого гамадрила				Плутоватый гамадрил					PRIMEAPE
+#Изучить Хижину подлого примата				Хижина подлого примата				PRIMEAPEBARREL
+#Изучить Дом дикого кабана					Дом дикого кабана					WILDBOREHOUSE
+#Изучить Дикого кабана						Дикий кабан							WILDBORE
+#Изучить Кабана-стража						Кабан-страж							WILDBOREGUARD
+#Изучить Клетку Вудлегса					Клетка Вудлегса						WOODLEGS_CAGE
+#Изучить Детёныша дойдой					Детёныш дойдой						DOYDOYBABY
+#Изучить Юного дойдой						Юный дойдой							DOYDOYTEEN
+#Изучить Вьющийся кустарник					Вьющийся кустарник					BUSH_VINE
+#Изучить Вьющийся кустарник					Вьющийся кустарник					SNAKEDEN
+#Изучить Корень вьющегося кустарника		Корень вьющегося кустарника			DUG_BUSH_VINE
+#Изучить Доску для сёрфинга					Доска для сёрфинга					SURFBOARD
+#Изучить Доску для сёрфинга					Доска для сёрфинга					SURFBOARD_ITEM
+#Изучить Пальмового энта					Пальмовый энт						TREEGUARD
+#Изучить Палку для ловли мидий				Палка для ловли мидий				MUSSEL_STICK
+#Изучить Кучку песка						Кучка песка							SANDHILL
+#Изучить Кроблика							Кроблик								CRAB
+#Изучить Движущийся песок					Движущийся песок					CRAB_HIDDEN
+#Изучить Шишку дерева джунглей				Шишка дерева джунглей				JUNGLE_TREE_SEED
+#Изучить Саженец дерева джунглей			Саженец дерева джунглей				JUNGLE_TREE_SAPLING
+#Изучить Семена сладкого картофеля			Семена сладкого картофеля			SWEET_POTATO_SEEDS
+#Изучить Павлина							Павлин								PEACOCK
+#Изучить Водного бифало						Водный бифало						OX
+#Изучить Детёныша водного бифало			Детёныш водного бифало				BABYOX
+#Изучить Тукана								Тукан								TOUCAN
+#Изучить Попугая							Попугай								PARROT
+#Изучить Банку с обездельфиненым тунцом		Обездельфиненый тунец				TUNACAN
+#Изучить Вобстера							Вобстер								LOBSTER
+#Изучить Мёртвого вобстера					Мёртвый вобстер						LOBSTER_DEAD
+#Изучить Вкусного вобстера					Вкусный вобстер						LOBSTER_DEAD_COOKED
+#Изучить Логово вобстера					Логово вобстера						LOBSTERHOLE
+#Изучить Бутылконосого дельфина				Бутылконосый дельфин				BALLPHIN
+#Изучить Синего кита						Синий кит							WHALE_BLUE
+#Изучить Белого кита						Белый кит							WHALE_WHITE
+#Изучить Тело голубого кита					Тело голубого кита					WHALE_CARCASS_BLUE
+#Изучить Тело белого кита					Тело белого кита					WHALE_CARCASS_WHITE
+#Изучить Жир кита							Жир кита							BLUBBER
+#Изучить Генератор льда 3000				Генератор льда 3000					ICEMAKER
+#Изучить Кофейные зёрна						Кофейные зёрна						COFFEEBEANS
+#Изучить Жареные кофейные зёрна				Жареные кофейные зёрна				COFFEEBEANS_COOKED
+#Изучить Сумку шеф-повара					Сумка шеф-повара					SPICEPACK
+#Изучить Сумочку письмоносца				Сумочка письмоносца					MAILPACK
+#Изучить Шип кактуса						Шип кактуса							NEEDLESPEAR
+#Изучить Роллы «Калифорния»					Роллы «Калифорния»					CALIFORNIAROLL
+#Изучить Суп из вобстера					Суп из вобстера						LOBSTERBISQUE
+#Изучить Ужин из вобстера					Ужин из вобстера					LOBSTERDINNER
+#Изучить Скунсоската						Скунсоскат							STUNGRAY
+#Изучить Набор для ремонта лодки			Набор для ремонта лодки				BOATREPAIRKIT
+#Изучить Пакима Бэггимс						Паким Бэггимс						PACKIM
+#Изучить Йаарминога							Йаарминог							OCTOPUSKING
+#Изучить Флюпа								Флюп								FLUP
+#Изучить Шляпу «Эврика!»					Шляпа «Эврика!»						EUREKAHAT
+#Изучить Птицу-грубияна						Птица-грубиян						WALLYINTRO
+#Изучить Ядовитого комара					Ядовитый комар						MOSQUITO_POISON
+#Изучить Мэрма-рыбака						Мэрм-рыбак							MERMFISHER
+#Изучить Хижину мэрма-рыбака				Хижина мэрма-рыбака					MERMHOUSE_FISHER
+#Изучить Жёлтое брюшко комара				Жёлтое брюшко комара				MOSQUITOSACK_YELLOW
+#Изучить Голову кабана						Голова кабана						WILDBOREHEAD
+#Изучить Корень слоновьего кактуса			Корень слоновьего кактуса			ELEPHANTCACTUS_STUMP
+#Изучить Суфле из сладкого картофеля		Суфле из сладкого картофеля			SWEETPOTATOSOUFFLE
+#Изучить Роулинга							Роулинг								RAWLING
+#Изучить Сгоревшее дотла дерево				Сгоревшее дотла дерево				VOLCANO_SHRUB
+#Изучить Тюленя								Тюлень								TWISTER_SEAL
+#Изучить Посох морехода						Посох морехода						SAIL_STICK
+#Изучить Призрак пирата						Призрак пирата						PIRATEGHOST
+#Изучить Крякена							Крякен								KRAKEN
+#Изучить Щупальце Крякена					Щупальце Крякена					KRAKEN_TENTACLE
+#Изучить Обломки «%s»						Обломки «%s»						WRECKOF
+
+
+
+# ------------------------------------------------------------------------------ Действие lookat
+
+#Осмотреть мэрию Свинсбурга					Мэрия Свинсбурга				PIG_SHOP_CITYHALL
+#Осмотреть голубя							Голубь							PIGEON
+#Осмотреть часть древнего робота			Часть древнего робота			ANCIENT_ROBOT_CLAW
+#Осмотреть часть древнего робота			Часть древнего робота			ANCIENT_ROBOT_HEAD
+#Осмотреть часть древнего робота			Часть древнего робота			ANCIENT_ROBOT_LEG
+#Осмотреть часть древнего робота			Часть древнего робота			ANCIENT_ROBOT_RIBS
+#Осмотреть жука-полёвку						Жук-полёвка						WEEVOLE
+#Осмотреть панцирь жука-полёвки				Панцирь жука-полёвки			WEEVOLE_CARAPACE
+
+
+
+# ------------------------------------------------------------------------------ Действие usedoor
+
+#Войти в мэрию Свинсбурга					Мэрия Свинсбурга				PIG_SHOP_CITYHALL
+
+
+
+# ------------------------------------------------------------------------------ Действие walkto
+
+#Идти к Двери Максвелла					Дверь Максвелла					ADVENTURE_PORTAL
+#Идти к Семенам дуриана					Семена дуриана					DURIAN_SEEDS
+#Идти к Каменному блоку					Каменный блок					CUTSTONE
+#Идти к Водорослям						Водоросли						POND_ALGAE
+#Идти к Костру							Костёр							BONFIRE
+#Идти к Гончиусу стрелятиусу			Гончиус стрелятиус				EYETURRET_ITEM
+#Идти к Ленивому исследователю			Ленивый исследователь			ORANGESTAFF
+#Идти к Паучьим яйцам					Паучьи яйца						SPIDEREGGSACK
+#Идти к Тэм-о-шентер					Тэм-о-шентер					WALRUSHAT
+#Идти к Рыбным такос					Рыбные такос					FISHTACOS
+#Идти к Семенам							Семена							SEEDS
+#Идти к Фруктовому коктейлю				Фруктовый коктейль				FRUITMEDLEY
+#Идти к Разбитой реликвии				Разбитая реликвия				RUINS_RUBBLE
+#Идти к Жареным семенам					Жареные семена					SEEDS_COOKED
+#Идти к Костру							Костёр							CAMPFIRE
+#Идти к Семенам моркови					Семена моркови					CARROT_SEEDS
+#Идти к Древесному углю					Древесный уголь					CHARCOAL
+#Идти к Огню Ночи						Огонь Ночи						NIGHTLIGHT
+#Идти к Гуано							Гуано							GUANO
+#Идти к Семенам граната					Семена граната					POMEGRANATE_SEEDS
+#Идти к Реликвии						Реликвия						RELIC
+#Идти к Огню							Огонь							FIRE
+#Идти к Гончиусу стрелятиусу			Гончиус стрелятиус				EYETURRET
+#Идти к Гончей							Гончая							HOUND
+#Идти к Костям							Кости							HOUNDBONE
+#Идти к Рататую							Рататуй							RATATOUILLE
+#Идти к Пчеле-убийце					Пчела-убийца					KILLERBEE
+#Идти к Циклопу-оленю					Циклоп-олень					DEERCLOPS
+#Идти к Семенам питайи					Семена питайи					DRAGONFRUIT_SEEDS
+#Идти к Пеплу							Пепел							ASH
+#Идти к Монстро-лазанье					Монстро-лазанья					MONSTERLASAGNA
+#Идти к Тефтелям						Тефтели							MEATBALLS
+#Идти к Вафлям							Вафли							WAFFLES
+#Идти к Ленивому собирателю				Ленивый собиратель				ORANGEAMULET
+#Идти к Яйцам с беконом					Яйца с беконом					BACONEGGS
+#Идти к Разрушенной древней псевдонаучной станции	Разрушенная древняя псевдонаучная станция	ANCIENT_ALTAR_BROKEN
+#Идти к Древней псевдонаучной станции	Древняя псевдонаучная станция	ANCIENT_ALTAR
+#Идти к Изодранным проводам				Изодранные провода				TRINKET_6
+#Идти к Королю свиней					Король свиней					PIGKING
+#Идти к Человеку-оркестру				Человек-оркестр					ONEMANBAND
+#Идти к Гордову узлу					Гордов узел						TRINKET_3
+#Идти к Кострищу						Кострище						FIREPIT
+#Идти к Кроличьей норе					Кроличья нора					RABBITHOLE
+#Идти к Улью пчёл-убийц					Улей пчёл-убийц					WASPHIVE
+#Идти к Улью							Улей							BEEBOX
+#Идти к Дикому улью						Дикий улей						BEEHIVE
+#Идти к Пеплу от %s						Пепел от %s						ASH_REMAINS
+#Идти к Семенам кукурузы				Семена кукурузы					CORN_SEEDS
+#Идти к Камням							Камни							ROCKS
+#Идти к Семенам баклажана				Семена баклажана				EGGPLANT_SEEDS
+#Идти к Уикерботтом						Уикерботтом						WICKERBOTTOM
+#Идти к Ковру							Ковёр							TURF_CARPETFLOOR
+#Идти к Паучьему дёрну					Паучий дёрн						TURF_WEBBING
+#Идти к Крыльям бабочки					Крылья бабочки					BUTTERFLYWINGS
+#Идти к Бифало							Бифало							BEEFALO
+#Идти к Пещерно-каменному дёрну			Пещерно-каменный дёрн			TURF_UNDERROCK
+#Идти к Обезьяньему тотему				Обезьяний тотем					MONKEYBARREL
+#Идти к Совершенно нормальному дереву	Совершенно нормальное дерево	LIVINGTREE
+#Идти к Бильбоке						Бильбоке						TRINKET_7
+#Идти к Болезни перерождения			Болезнь перерождения			RESURRECTION_PENALTY
+#Идти к Глубинному червю				Глубинный червь					WORM
+#Идти к голове свина					Голова свина					PIGHEAD
+#Идти к Гуано дёрну						Гуано дёрн						TURF_CAVE
+#Идти к Дому свина						Дом свина						PIGHOUSE
+#Идти к Зайцу							Заяц							BUNNYMAN
+#Идти к Кошмарному огню					Кошмарный огонь					NIGHTMARELIGHT
+#Идти к Кубку свершений					Кубок свершений					ACCOMPLISHMENT_SHRINE
+#Идти к Пустому чертежу					Пустой чертёж					MAGIC_BLUEPRINT
+#Идти к Светящейся ягоде				Светящаяся ягода				WORMLIGHT
+#Идти к Свину-стражу					Свин-страж						PIGGUARD
+#Идти к Семенам тыквы					Семена тыквы					PUMPKIN_SEEDS
+#Идти к Тени							Тень							SHADOWWAXWELL
+#Идти к Шкуре свиньи					Шкура свиньи					PIGSKIN
+#Идти к Огню Максвелла					Огонь Максвелла					MAXWELLLIGHT
+#Идти к Копью							Копьё							SPEAR
+#Идти к Затонувшей лодке				Затонувшая лодка				SUNKBOAT
+#Идти к Земляной насыпи					Земляная насыпь					WORM_DIRT
+#Идти к книге «Сказки на ночь»			Сказки на ночь					BOOK_SLEEP
+#Идти к книге «Конец близок!»			Конец близок!					BOOK_BRIMSTONE
+#Идти к книге «О щупальцах»				О щупальцах						BOOK_TENTACLES
+#Идти к книге «Практическое садоводство»	Практическое садоводство	BOOK_GARDENING
+#Идти к книге «Птицы всего мира»			Птицы всего мира			BOOK_BIRDS
+#Идти к Семенам арбуза					Семена арбуза					WATERMELON_SEEDS
+#Идти к Льду							Лёд								ICE
+#Идти к Эндотермическому костру			Эндотермический костёр			COLDFIRE
+#Идти к Эндотермическому кострищу		Эндотермическое кострище		COLDFIREPIT
+#Идти к Молнии							Молния							LIGHTNING
+#Идти к Медведю-барсуку					Медведь-барсук					BEARGER
+#Идти к Боевому копью					Боевое копьё					SPEAR_WATHGRITHR
+#Идти к Лосю							Лось							MOOSE1
+#Идти к Гусю							Гусь							MOOSE2
+#Идти к Корню каштановой берёзы			Корень каштановой берёзы		DECIDUOUS_ROOT
+#Идти к Саженцу каштановой берёзы		Саженец каштановой берёзы		ACORN_SAPLING
+#Идти к Крыльям гломмера				Крылья гломмера					GLOMMERWINGS
+#Идти к Вольт-козе						Вольт-коза						LIGHTNINGGOAT
+#Идти к Крото-очкам						Крото-очки						MOLEHAT
+#Идти к Кроточервю						Кроточервь						MOLE_ABOVEGROUND
+#Идти к Кроточервю						Кроточервь						MOLE
+#Идти к Кое-как собранному порталу		Кое-как собранный портал		MULTIPLAYER_PORTAL
+#Идти к Восстанавливающей инъекции		Восстанавливающая инъекция		LIFEINJECTOR
+#Идти к Абигейл							Абигейл							ABIGAIL
+#Идти к Вигфрид							Вигрфрид						WATHGRITHR
+#Идти к Измерителю температуры			Измеритель температуры			WINTEROMETER
+#Идти к Ворсистым соплям				Ворсистые сопли					PHLEGM
+#Идти к Безумно милой лавовой личинке	Безумно милая лавовая личинка	LAVAE_PET
+#Идти к Указателю						Указатель						ARROWSIGN_PANEL
+#Идти к Указателю						Указатель						ARROWSIGN_POST
+#Идти к Вигфрид							Вигфрид							WATHGRITHR
+#Идти к Миссис Уикерботтом				Миссис Уикерботтом				PUPPET_WICKERBOTTOM
+--- CAPY DLC
+#Идти к книге «Прелести вулканологии»		Прелести вулканологии				BOOK_METEOR
+#Идти к Сгнившей рыбине						Сгнившая рыбина						SPOILED_FISH
+#Идти к Укулеле								Укулеле								TRINKET_15
+#Идти к Промокшей свече						Промокшая свеча						SUNKEN_BOAT_TRINKET_3
+#Идти к Морскому улучшателю					Морской улучшатель					SUNKEN_BOAT_TRINKET_4
+#Идти к Плавающим обломкам					Плавающие обломки					FLOTSAM
+#Идти к Затонувшей лодке					Затонувшая лодка					SUNKEN_BOAT
+#Идти к Дикому кабану						Дикий кабан							WILDBORE
+#Идти к Кабану-стражу						Кабан-страж							WILDBOREGUARD
+#Идти к Бамбуковым зарослям					Бамбуковые заросли					BAMBOOTREE
+#Идти к Вьющемуся кустарнику				Вьющийся кустарник					BUSH_VINE
+#Идти к Вьющемуся кустарнику				Вьющийся кустарник					SNAKEDEN
+#Идти к Корню вьющегося кустарника			Корень вьющегося кустарника			DUG_BUSH_VINE
+#Идти к Мидии								Мидия								MUSSEL
+#Идти к Приготовленной мидии				Приготовленная мидия				MUSSEL_COOKED
+#Идти к Палке для ловли мидий				Палка для ловли мидий				MUSSEL_STICK
+#Идти к Мидиям								Мидии								MUSSEL_FARM
+#Идти к Мачете								Мачете								MACHETE
+#Идти к Роскошному мачете					Роскошное мачете					GOLDENMACHETE
+#Идти к Супер-подзорной трубе				Супер-подзорная труба				SUPERTELESCOPE
+#Идти к Электрическому равнобедреннику		Электрический равнобедренник		BERMUDATRIANGLE
+#Идти к Движущемуся песку					Движущийся песок					CRAB_HIDDEN
+#Идти к Саженцу дерева джунглей				Саженец дерева джунглей				JUNGLE_TREE_SAPLING
+#Идти к Водорослям							Водоросли							SEAWEED
+#Идти к Запечённым водорослям				Запечённые водоросли				SEAWEED_COOKED
+#Идти к Водорослям							Водоросли							SEAWEED_PLANTED
+#Идти к Сушёным водорослям					Сушёные водоросли					SEAWEED_DRIED
+#Идти к Морским блюдечкам					Морские блюдечки					LIMPETS
+#Идти к Приготовленным морским блюдечкам	Приготовленные морские блюдечки		LIMPETS_COOKED
+#Идти к Сладкому картофелю					Сладкий картофель					SWEET_POTATO
+#Идти к Приготовленному сладкому картофелю	Приготовленный сладкий картофель	SWEET_POTATO_COOKED
+#Идти к Семенам сладкого картофеля			Семена сладкого картофеля			SWEET_POTATO_SEEDS
+#Идти к Сладкому картофелю					Сладкий картофель					SWEET_POTATO_PLANTED
+#Идти к Осьминожьему сундуку				Осьминожий сундук					OCTOPUSCHEST
+#Идти к Забавному обезьяньему мячику		Забавный обезьяний мячик			MONKEYBALL
+#Идти к Водному бифало						Водный бифало						OX
+#Идти к Попугаю								Попугай								PARROT
+#Идти к Банке с обездельфиненым тунцом		Обездельфиненый тунец				TUNACAN
+#Идти к Подозрительным пузырям				Подозрительные пузыри				WHALE_BUBBLES
+#Идти к Отравленному копью					Отравленное копьё					SPEAR_POISON
+#Идти к Обсидиановому мачете				Обсидиановое мачете					OBSIDIANMACHETE
+#Идти к Обсидиановому гарпунному ружью		Обсидиановое гарпунное ружьё		OBSIDIANSPEARGUN
+#Идти к Обсидиановому копью					Обсидиановое копьё					SPEAR_OBSIDIAN
+#Идти к Надетой пиратской двууголке			Надетая пиратская двууголка			WORNPIRATEHAT
+#Идти к Гарпунному ружью					Гарпунное ружьё						SPEARGUN
+#Идти к Отравленному гарпунному ружью		Отравленное гарпунное ружьё			SPEARGUN_POISON
+#Идти к Обсидиановому кострищу				Обсидиановое кострище				OBSIDIANFIREPIT
+#Идти к Настоящей серёжке истины			Настоящая серёжка истины			EARRING
+#Идти к Ткани								Ткань								FABRIC
+#Идти к Броне из ракушек					Броня из ракушек					ARMORSEASHELL
+#Идти к Алтарю жратвоприношений вулкану		Алтарь жратвоприношений вулкану		VOLCANO_ALTAR
+#Идти к Вулканическому посоху				Вулканический посох					VOLCANOSTAFF
+#Идти к Кофейным зёрнам						Кофейные зёрна						COFFEEBEANS
+#Идти к Кофе								Кофе								COFFEE
+#Идти к Жареным кофейным зёрнам				Жареные кофейные зёрна				COFFEEBEANS_COOKED
+#Идти к Слоновьему кактусу					Слоновий кактус						ELEPHANTCACTUS
+#Идти к Слоновьему кактусу					Слоновий кактус						DUG_ELEPHANTCACTUS
+#Идти к Слоновьему кактусу с шипами			Слоновий кактус с шипами			ELEPHANTCACTUS_ACTIVE
+#Идти к Корню слоновьего кактуса			Корень слоновьего кактуса			ELEPHANTCACTUS_STUMP
+#Идти к Лёгкому перьевому парусу			Лёгкий перьевой парус				FEATHERSAIL
+#Идти к Железному ветру						Железный ветер						IRONWIND
+#Идти к Мёртвой морской собаке				Мёртвая морская собака				FISH_MED
+#Идти к Роллам «Калифорния»					Роллы «Калифорния»					CALIFORNIAROLL
+#Идти к Гамбо из морепродуктов				Гамбо из морепродуктов				SEAFOODGUMBO
+#Идти к Севиче								Севиче								CEVICHE
+#Идти к Биолюминесценции					Биолюминесценция					BIOLUMINESCENCE
+#Идти к Акульему плавнику					Акулий плавник						SHARK_FIN
+#Идти к Лопастям турбины					Лопасти турбины						TURBINE_BLADES
+#Идти к Мозговистой материи					Мозговистая материя					CORAL_BRAIN
+#Идти к Шляпе «Эврика!»						Шляпа «Эврика!»						EUREKAHAT
+#Идти к Странной деревянной картофелине		Странная деревянная картофелина		TELEPORTATO_SW_POTATO
+#Идти к Странной деревянной платформе		Странная деревянная платформа		TELEPORTATO_SW_BASE
+#Идти к Странной деревянной платформе	Странная деревянная платформа		TELEPORTATO_SW_CHECKMATE
+#Идти к Корабельного коня					Корабельный конь					KNIGHTBOAT
+#Идти к Птице-грубияну						Птица-грубиян						WALLYINTRO
+#Идти к Мэрму-рыбаку						Мэрм-рыбак							MERMFISHER
+#Идти к Акульей зубной коронке				Акулья зубная коронка				SHARK_TEETHHAT
+#Идти к Огню								Огонь								HOUNDFIRE
+#Идти к Частичному очистителю				Частичный очиститель				GASHAT
+#Идти к Суфле из сладкого картофеля			Суфле из сладкого картофеля			SWEETPOTATOSOUFFLE
+#Идти к Монстро-тартару						Монстро-тартар						MONSTERTARTARE
+#Идти к Ухе из мидий						Уха из мидий						MUSSELBOUILLABAISE
+#Идти к Акульему котёнку					Акулий котёнок						SHARKITTEN
+#Идти к Сгоревшему дотла дереву				Сгоревшее дотла дерево				VOLCANO_SHRUB
+#Идти к Бую									Буй									BUOY
+#Идти к Тюльнадо							Тюльнадо							TWISTER
+#Идти к Тюленю								Тюлень								TWISTER_SEAL
+#Идти к Ковру из змеиной кожи				Ковёр из змеиной кожи				TURF_SNAKESKINFLOOR
+#Идти к Промокшей обезьяне					Промокшая обезьяна					WILBUR_UNLOCK
+#Идти к Воющей раковине						Воющая раковина						WIND_CONCH
+#Идти к Гарпунному ружью					Гарпунное ружьё						SPEAR_LAUNCHER
+#Идти к Обломкам «%s»						Обломки «%s»						WRECKOF
+#Идти к голубю								Голубь								PIGEON
+#Идти к живой изгороди						Живая изгородь						HEDGE
+#Идти к жуку-полёвке						Жук-полёвка							WEEVOLE
+
+
+
+# ------------------------------------------------------------------------------ Действие sleepin
+
+#Спать палатке						Палатка						TENT
+#Спать навесе для сиесты			Навес для сиесты			SIESTAHUT
