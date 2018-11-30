@@ -365,8 +365,6 @@ function rebuildname(str1,action,objectname)
 				str=repsubstr(str,#str-3,"уюся")
 			elseif string.sub(str,#str)=="я" then
 				str=repsubstr(str,#str,"ю")
-			elseif string.sub(str,#str-1)=="ок" then
-				str=repsubstr(str,#str-1,"ка")
 			end
 		end
 		resstr=resstr..str..delimetr
