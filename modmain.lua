@@ -1225,20 +1225,6 @@ local function newSelectPortrait(self,portrait)
 			--["warbucks"]=1
 			--["wilba"]=1
 		}
-		if t.ROG_Installed or t.SW_Installed or t.H_Installed then
-			list["wathgrithr"]=1
-			list["webber"]=1
-		end
-		if t.SW_Installed or t.H_Installed then
-			list["walani"]=1
-			--list["warly"]=1
-			--list["woodlegs"]=1
-			--list["wilbur"]=1
-		end
-		if t.H_Installed then
-			--list["warbucks"]=1
-			--list["wilba"]=1
-		end
 		local name=string.sub(self.heroportait.texture,1,-5)
 		if list[name] then
 			self.heroportait:SetTexture("images/rus_"..name..".xml", "rus_"..name..".tex")
@@ -1351,17 +1337,6 @@ AddClassPostConstruct("screens/optionsscreen", function(self)
 			if v.selectedIndex and v.selectedIndex>0 and v.selectedIndex<=#v.options then v:UpdateText(v.options[v.selectedIndex].text) end
 		end
 	end
-	--Подвигаем все описания вправо
-	-- в DS не нужно 
-	--[[if self.grid then for i,v in pairs(self.grid.children) do
-		if type(v)=="table" and v.name=="SpinnerGroup" then
-			for ii,vv in pairs(v.children) do
-				if type(vv)=="table" and vv.name=="Text" then
-				        vv:Nudge({x=40,y=0,z=0})
-				end
-			end
-		end
-	end end]]
 end)
 
 
@@ -1584,75 +1559,6 @@ AddGlobalClassPostConstruct("playerprofile", "PlayerProfile", function(self)
 	self["SetLocalizaitonValue"]=SetLocalizaitonValue --метод задачи значения опции
 	self["GetLocalizaitonValue"]=GetLocalizaitonValue --метод получения значения опции
 end)
-
-
-
---Добавление кнопки настроек в опциях игры
-function AddSettingsButton()
-	-- Отключена, потому что в меню теперь нет места
-	--[[local OldShowMenu --Старая функция показа меню для mainscreen
-	function NewShowMenu(self,menu_items) --Новая функция
-		for i,v in ipairs(menu_items) do --ищем кнопку "управление", и вставляем после неё "Русификация"
-			if v.text==STRINGS.UI.MAINSCREEN.CONTROLS then
-				local LanguageOptions = require "screens/LanguageOptions"
-				table.insert( menu_items, i+1, {text="Русификация", cb= function() GLOBAL.TheFrontEnd:PushScreen(LanguageOptions()) end})
-			end
-		end
-		OldShowMenu(self,menu_items) --Запускаем оригинальную функцию
-	end ]]
-	AddClassPostConstruct("screens/mainscreen", function(self) --Выполняем подмену, чтобы показывалась кнопка "Русификация"
-		--OldShowMenu=self["ShowMenu"]
-		--self["ShowMenu"]=NewShowMenu
-		--Переводим рекламу и добавляем рекламу на вики игры
-		if self.motd then
-			self.motd.showwiki=GLOBAL.os.time()%5<3 --появится с вероятностью 3/5=0.6
-			self.motd.OldShow=self.motdShow
-			
-			function motdShow(self)
-				if self.OldShow then self:OldShow() end
-				local titlelist={
-				["Beefalo Plush!"]="Плюшевый Бифало!",
-				["Don't Starve Figures!"]="Фигурки Don't Starve",
-				["New Curator Page!"]="Новая страница Куратора!",
-				["Halloween Mod Challenge"]="Хэллоуинский конкурс",
-				["Technical Difficulties"]="Технические трудности",
-				["Chester Plush Is Back!"]="Честер вернулся!",
-				["KLEI STORE SALE!"]="РАСПРОДАЖА В МАГАЗИНЕ"}
-				local textlist={
-				["Today, we welcome 2 million new players into the Don't Starve Together community."]="Сегодня мы приглашаем\n2 миллиона новых игроков в наше сообщество\nDon't Starve Together.",
-				["Don't Starve collectable figures are available now at the Klei Store!"]="Игрушечные фигурки\nDon't Starve уже можно купить в магазине Klei!",
-				["Don't Starve collectable figures are available now in the Klei Store!"]="Игрушечные фигурки\nDon't Starve уже можно купить в магазине Klei!",
-				["Check out the new \"Rhymes with Play\" Curator page on Steam!"]="Посетите новую страницу куратора \"Rhymes with Play\" в Steam!",
-				["Beefalo Plush are available now in the Klei Store!"]="Теперь в магазине Klei можно купить плюшевого бифало!",
-				["If you want to participate in our Halloween Mod Challenge click the link below!"]="Если хотите принять участие в хэллоуинском конкурсе модов, нажмите на ссылку ниже!",
-				["We are experiencing lobby server issues. We will have things fixed up as soon as possible."]="У нас небольшие проблемы с серверами. Постараемся исправить как можно быстрее.",
-				["The Multiplayer Expansion is Now Available on Steam Early-Access!"]="Дополнение\nс многопользовательским режимом вышло в ранний доступ на Steam!",
-				["Big Klei Store update! Chester is back along with winter hats, spiders and new figs!"]="Большое обновление магазина Klei!\nЧестер вернулся вместе с зимними шапками, пауками и новыми фигурками!",
-				["Krampus Sale is happening now! Save up to 25% on Don't Starve figs and more! "]="Крампус объявил распродажу! Сэкономьте\nдо 25% на фигурках \nDon't Starve!"}
-				local buttonlist={
-				["Read more"]="Интересно",
-				["Klei Store"]="Магазин Klei",
-				["Follow Us"]="Посетить",
-				["Join Us"]="Участвую",
-				["More Info"]="Подробнее",
-				["Check it out"]="Посмотреть",
-				["GO TO SALE"]="УЖЕ БЕГУ"}
-			        if self.showwiki then
-					self.motdtitle:SetString("Русскоязычная вики")
-					self.motdtext:SetString("Получить подробное описание всего в игре вы можете на русскоязычной вики.")
-					self.button:SetText("Где это?")
-					self.button:SetOnClick( function() GLOBAL.VisitURL("http://ru.dont-starve.wikia.com/wiki/Don%27t_Starve_wiki") end )
-				else
-					self.motdtitle:SetString(titlelist[self.motdtitle:GetString()] or self.motdtitle:GetString())
-					self.motdtext:SetString(textlist[self.motdtext:GetString()] or self.motdtext:GetString())
-					self.button:SetText(buttonlist[self.button:GetText()] or self.button:GetText())
-				end
-			end
-			self.motd.Show=motdShow
-			self.motd:Show()
-		end
-	end)
-end
 
 
 
