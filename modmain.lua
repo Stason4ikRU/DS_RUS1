@@ -225,7 +225,8 @@ function rebuildname(str1,action,objectname)
 	local sogl2 = {['г']=1,['ж']=1,['к']=1,['х']=1,['ц']=1,['ч']=1,['ш']=1,['щ']=1}
 	local sogl3 = {["р"]=1,["л"]=1,["к"]=1,["Р"]=1,["Л"]=1,["К"]=1}
 
-	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true, pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_banker = true, pigman_collector = true, pigman_hunter = true, pigman_mayor = true, pigman_mechanic = true, pigman_professor = true, pigman_usher = true, pigman_royalguard = true, pigman_royalguard_2 = true, pigman_farmer = true, pigman_miner = true, pigman_queen = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true, pigman_banker_shopkeep = true, pigman_shopkeep = true, pigman_hunter_shopkeep = true, pigman_mayor_shopkeep = true, pigman_farmer_shopkeep = true, pigman_miner_shopkeep = true, pigman_collector_shopkeep = true, pigman_professor_shopkeep = true, scorpion = true}
+	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true, pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_banker = true, pigman_collector = true, pigman_hunter = true, pigman_mayor = true, pigman_mechanic = true, pigman_professor = true, pigman_usher = true, pigman_royalguard = true, pigman_royalguard_2 = true, pigman_farmer = true, pigman_miner = true, pigman_queen = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true, pigman_banker_shopkeep = true, pigman_shopkeep = true, pigman_hunter_shopkeep = true, pigman_mayor_shopkeep = true, pigman_farmer_shopkeep = true, pigman_miner_shopkeep = true, pigman_collector_shopkeep = true, pigman_professor_shopkeep = true, antman_warrior = true, antman = true, ballphin = true, mandrakeman = true, parrot_pirate = true}
+	--
 	local pigfemale = {pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true}
 	local seeds = {SEEDS = true, CORN_SEEDS = true, WATERMELON_SEEDS = true, CARROT_SEEDS = true, DRAGONFRUIT_SEEDS = true, DURIAN_SEEDS = true, EGGPLANT_SEEDS = true, POMEGRANATE_SEEDS = true, PUMPKIN_SEEDS = true, SWEET_POTATO_SEEDS = true, COFFEEBEANS = true}
 	local resstr=""
@@ -235,13 +236,15 @@ function rebuildname(str1,action,objectname)
 	local counter=0
 	local FoundNoun
 
-	for str in string.gmatch(str1.." ","[А-Яа-яЁёA-Za-z0-9%%'%.]+[%s-]") do
+	for str in string.gmatch(str1.." ","[А-Яа-яЁёA-Za-z0-9#%%'%.]+[%s-]") do
 		counter=counter+1
 		delimetr=string.sub(str,#str)
 		str=string.sub(str,1,#str-1)
 		if action=="WALKTO" then --идти к (кому? чему?) Дательный
 			if str=="Конрой" then
 				str="Конрою"
+			elseif str=="Шарки" then
+				str="Шарки"
 			elseif string.sub(str,#str-1)=="ая" and resstr=="" then
 				str=repsubstr(str,#str-1,"ой")
 			elseif string.sub(str,#str-1)=="ая" then
@@ -335,10 +338,16 @@ function rebuildname(str1,action,objectname)
 				str=string.sub(str,1,#str-2).."ка"
 			elseif string.sub(str,#str-2)=="лец" then
 				str=string.sub(str,1,#str-2).."ьца"
-			elseif string.sub(str,#str-2)=="ный" then
+			elseif string.sub(str,#str-1)=="ый" then
 				str=string.sub(str,1,#str-2).."ого"
+			elseif string.sub(str,#str-1)=="ой" then
+				str=string.sub(str,1,#str-2).."ого"
+			elseif string.sub(str,#str-2)=="чий" then
+				str=string.sub(str,1,#str-2).."его"
 			elseif string.sub(str,#str-1)=="ец" then
 				str=string.sub(str,1,#str-2).."ца"
+			elseif string.sub(str,#str-1)=="ая" then
+				str=string.sub(str,1,#str-2).."ую"
 			elseif string.sub(str,#str)=="а" then
 				str=string.sub(str,1,#str-1).."у"
 			elseif string.sub(str,#str)=="я" then
@@ -381,6 +390,29 @@ GLOBAL.testname=function(name, key)
 	output = output .. "Осмотреть "..rebuildname(name,"DEFAULTACTION", key)
 	print("\n"..output.."\n")
 	return output
+end
+
+--Сохраняет в файле все имена с действием, указанным в параметре action)
+GLOBAL.printnames=function(action,obn)
+	local filename = MODROOT..action..".txt"
+	local names={}
+	local f=assert(io.open(MODROOT.."names_new.txt","r"))
+	for line in f:lines() do
+		local s1
+		if action=="DEFAULTACTION" then	
+			s1="Осмотреть "
+		elseif action=="WALKTO" then
+			s1="Идти к "
+		end
+		s1=s1..rebuildname(line,action,obn).."\r\n"
+		table.insert(names,s1)
+	end
+	f:close()
+	local file = io.open(filename, "w")
+	for i,v in ipairs(names) do
+		file:write(v)
+	end
+	file:close()
 end
 
 
