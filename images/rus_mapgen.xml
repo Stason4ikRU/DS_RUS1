@@ -9,4 +9,11 @@
 <Element name="rus_summer.tex" u1="0.125" u2="0.25" v1="0" v2="0.5" />
 <Element name="rus_autumn.tex" u1="0.25" u2="0.375" v1="0" v2="0.5" />
 <Element name="rus_spring.tex" u1="0.375" u2="0.5" v1="0" v2="0.5" />
+<Element name="rus_hurricane.tex" u1="0.75" u2="0.875" v1="0" v2="0.5" />
+<Element name="rus_dry.tex" u1="0.625" u2="0.75" v1="0" v2="0.5" />
+<Element name="rus_monsoon.tex" u1="0.75" u2="0.875" v1="0.5" v2="1" />
+<Element name="rus_mild.tex" u1="0.875" u2="1" v1="0" v2="0.5" />
+<Element name="rus_temperate.tex" u1="0.875" u2="1" v1="0" v2="0.5" />
+<Element name="rus_lush.tex" u1="0.875" u2="1" v1="0.5" v2="1" />
+<Element name="rus_humid.tex" u1="0.5" u2="0.625" v1="0" v2="0.5" />
 </Elements></Atlas>
