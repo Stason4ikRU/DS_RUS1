@@ -739,7 +739,7 @@ function LanguageOptions:LoadHistory()
 				if self.logtextlines<lines then self.logtextlines=lines end
 			end
 			lines=0
-			local ver,dat=string.match(line,"Версия ([^%(]*) %((.*)%)")
+			local ver,dat=string.match(line,"Версия ([^%(]*)%s-%((.*)%)")
 			dat=parsedate(dat.." 11:11:11")
 			table.insert(self.UpdateLog,{date=ver,time="от "..dat,chapters={}})
 		else --Если это не описание новой версии, значит одно из изменений версии
