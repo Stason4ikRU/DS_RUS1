@@ -228,7 +228,7 @@ function rebuildname(str1,action,objectname)
 	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true, pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_banker = true, pigman_collector = true, pigman_hunter = true, pigman_mayor = true, pigman_mechanic = true, pigman_professor = true, pigman_usher = true, pigman_royalguard = true, pigman_royalguard_2 = true, pigman_farmer = true, pigman_miner = true, pigman_queen = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true, pigman_banker_shopkeep = true, pigman_shopkeep = true, pigman_hunter_shopkeep = true, pigman_mayor_shopkeep = true, pigman_farmer_shopkeep = true, pigman_miner_shopkeep = true, pigman_collector_shopkeep = true, pigman_professor_shopkeep = true, antman_warrior = true, antman = true, ballphin = true, mandrakeman = true, parrot_pirate = true}
 	--
 	local pigfemale = {pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true}
-	local seeds = {SEEDS = true, CORN_SEEDS = true, WATERMELON_SEEDS = true, CARROT_SEEDS = true, DRAGONFRUIT_SEEDS = true, DURIAN_SEEDS = true, EGGPLANT_SEEDS = true, POMEGRANATE_SEEDS = true, PUMPKIN_SEEDS = true, SWEET_POTATO_SEEDS = true, COFFEEBEANS = true}
+	local seeds = {SEEDS = true, CORN_SEEDS = true, WATERMELON_SEEDS = true, CARROT_SEEDS = true, DRAGONFRUIT_SEEDS = true, DURIAN_SEEDS = true, EGGPLANT_SEEDS = true, POMEGRANATE_SEEDS = true, PUMPKIN_SEEDS = true, SWEET_POTATO_SEEDS = true, COFFEEBEANS = true, DEERCLOPS_EYEBALL = true}
 	local resstr=""
 	local delimetr
 	local wasnoun=false
@@ -1047,7 +1047,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 				end
 			end
 		end
-		local exit_places = {pig_shop_doormats = true, doorway_cave = true, doorway_ruins = true}
+		local exit_places = {pig_shop_doormats = true, doorway_cave = true, doorway_ruins = true, palace_door = true}
 		if itisblueprint then
 			name="чертёж предмета \""..name.."\""
 		elseif act=="USEDOOR" and self.components.door.inst.prefab == "prop_door" and exit_places[self.components.door.inst.door_data_bank] then
@@ -1066,6 +1066,9 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 					STRINGS.ACTIONS.USEDOOR = "Перейти в"
 					name = "другой зал"
 				end
+			elseif exit_place == "palace_door" then
+				STRINGS.ACTIONS.USEDOOR = "Выйти из"
+				name = "Дворца"
 			end
 		elseif self.prefab=="wreck" and self.components.named then
 			--Обломки с названием корабля
@@ -1140,7 +1143,11 @@ if t.H_Installed then
 				local wantitem = nil
 				if act.target.prefab == "shelf_slot" and act.target.components.shelfer:GetGift() then
 					local item_name = string.upper(act.target.components.shelfer:GetGift().prefab)
-					wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+					if item_name=="TRINKET_GIFTSHOP_3" then
+						wantitem = "почтовую карточку Королевского дворца"
+					else
+						wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+					end
 				end
 
 				if wantitem then
