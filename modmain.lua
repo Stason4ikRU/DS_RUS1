@@ -340,6 +340,8 @@ function rebuildname(str1,action,objectname)
 				str=string.sub(str,1,#str-2).."ьца"
 			elseif string.sub(str,#str-1)=="ый" then
 				str=string.sub(str,1,#str-2).."ого"
+			elseif str=="Конрой" then
+				str="Конроя"
 			elseif string.sub(str,#str-1)=="ой" then
 				str=string.sub(str,1,#str-2).."ого"
 			elseif string.sub(str,#str-2)=="чий" then
