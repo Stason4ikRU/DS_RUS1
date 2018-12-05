@@ -273,6 +273,8 @@ function rebuildname(str1,action,objectname)
 				str=repsubstr(str,#str-1,"ьей")
 			elseif string.sub(str,#str-2)=="орь" then
 				str=string.sub(str,1,#str-3).."рю"
+			elseif string.sub(str,#str-2)=="вей" then
+				str=string.sub(str,1,#str-3).."вью"
 			elseif string.sub(str,#str-1)=="ек" then
 				str=string.sub(str,1,#str-2).."ку"
 				wasnoun=true
@@ -356,6 +358,8 @@ function rebuildname(str1,action,objectname)
 				str=string.sub(str,1,#str-1).."ю"
 			elseif string.sub(str,#str)=="ь" then
 				str=string.sub(str,1,#str-1).."я"
+			elseif string.sub(str,#str-2)=="вей" then
+				str=string.sub(str,1,#str-3).."вья"
 			elseif string.sub(str,#str)=="й" then
 				str=string.sub(str,1,#str-1).."я"
 			elseif sogl[string.sub(str,#str)] and pigfemale[objectname] then
