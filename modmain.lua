@@ -1254,6 +1254,40 @@ end)
 
 
 
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BRANCHING = "Дробность суши"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LOOP = "Цикличность суши"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SEASON = "Сезоны"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WEATHER = "Осадки"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LIGHTNING = "Молнии"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.CAVE_ENTRANCE = "Вход в пещеру"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SAPLING = "Саженцы"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MARSHBUSH = "Колючие кусты"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.ROCKS = "Валуны"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BERRYBUSH = "Ягодные кусты"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.RABBITS = "Кролики"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PIGS = "Свины"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BEEFALOHEAT = "Сезон размножения бифало"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.HUNT = "Следы"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PENGUINS = "Пинчайки"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.FROGS = "Пруды"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BEES = "Дикие ульи"
+--STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MERM = "Мэрмы"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.TENTACLES = "Щупальца"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.CHESS = "Шахматные фигуры"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LIEFS = "Энты"
+--ROG
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.AUTUMN = "Осень"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WINTER = "Зима"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SPRING = "Весна"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SUMMER = "Лето"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.FROGRAIN = "Дождь из лягушек"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WILDFIRES = "Самовозгорание"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MOLES = "Кроточерви"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.DECIDUOUSMONSTER = "Лиственный энт"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.GOOSEMOOSE = "Лось(Гусь)"
+
+
+
 local oldRefreshOptions --Старая функция заполнения опций в меню настроек карты
 local function newRefreshOptions(self) --Новая функция
 	oldRefreshOptions(self) --Запускаем оригинальную функцию
@@ -1278,9 +1312,8 @@ local function newRefreshOptions(self) --Новая функция
 			["humid.tex"]=1}
 	for _,a in pairs({[1]=self.optionspanel:GetChildren()}) do
 	for v in pairs(a) do --Перебираем ячейки
-			if tostring(v)=="option" then
+		if tostring(v)=="option" then
 			for prefab in pairs(v:GetChildren()) do --Ищем картинку и спиннер в ячейке
-				
 				if prefab.name and prefab.name:upper()=="IMAGE" then
 					if list[prefab.texture] then
 						prefab:SetTexture(MODROOT.."images/rus_mapgen.xml", "rus_"..prefab.texture)
