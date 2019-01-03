@@ -1029,7 +1029,8 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 			if type(v)=="string" and v~="" and string.sub(name,1,#v)==v then Prefix=v break end
 		end 
 		if string.sub(name,1,#STRINGS.WITHEREDITEM)==STRINGS.WITHEREDITEM then Prefix=STRINGS.WITHEREDITEM 
-		elseif string.sub(name,1,#STRINGS.SMOLDERINGITEM)==STRINGS.SMOLDERINGITEM then Prefix=STRINGS.SMOLDERINGITEM end
+		elseif string.sub(name,1,#STRINGS.SMOLDERINGITEM)==STRINGS.SMOLDERINGITEM then Prefix=STRINGS.SMOLDERINGITEM
+		elseif string.sub(name,1,#STRINGS.MYSTERIOUS)==STRINGS.MYSTERIOUS then Prefix=STRINGS.MYSTERIOUS end
 		if Prefix then --Нашли префикс. Меняем его и удаляем из имени для его дальнейшей корректной обработки
 			name=string.sub(name,#Prefix+2)--Убираем префикс из имени
 			if act then
