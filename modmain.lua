@@ -1202,7 +1202,7 @@ AddClassPostConstruct("components/playercontroller", function(self)
 end)
 
 
-
+--исправление склонения слова "день" в меню паузы
 local oldSetPause=GLOBAL.SetPause
 function newSetPause(val, reason)
 	if GLOBAL.GetClock() ~= nil then
@@ -1435,7 +1435,7 @@ end)
 
 
 
---[[--согласовываем слово "дней" с количеством дней в окне смерти персонажа
+--согласовываем слово "дней" с количеством дней в окне смерти персонажа
 AddClassPostConstruct("screens/deathscreen", function(self, days_survived)
 	if self.t2 and days_survived then
 		self.t2:SetString(StringTime(days_survived))
@@ -1446,7 +1446,7 @@ AddClassPostConstruct("screens/deathscreen", function(self, days_survived)
 	if self.leveltext then
 		self.leveltext:Nudge({x=10,y=0,z=0})
 	end
-end)]]
+end)
 
 
 
