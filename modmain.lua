@@ -1115,13 +1115,18 @@ end
 GLOBAL.EntityScript["GetDisplayName"]=GetDisplayNameNew --подменяем на новую
 
 
+--исправление склонения "хрюнтов" в магазинах
 if t.H_Installed then
 	GLOBAL.ACTIONS.SHOP.stroverridefn = function(act)
 		if not act.target or not act.target.costprefab or not act.target.components.shopdispenser:GetItem() then
 			return nil
 		else
 			local item_name = string.upper(act.target.components.shopdispenser:GetItem())
-			local wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+			if item_name=="DEED" then
+				wantitem = "документы на собственность"
+			else
+				wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+			end
 			local payitem = STRINGS.NAMES[string.upper(act.target.costprefab)]
 			local qty = ""
 			if act.target.costprefab == "oinc" then		
