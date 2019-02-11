@@ -159,7 +159,7 @@ end
 if t.SW_Installed or t.H_Installed then
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_walani.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_warly.xml"))
-	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_woodlegs.xml"))
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_woodlegs.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilbur.xml"))
 end
 if t.H_Installed then
@@ -1240,7 +1240,7 @@ local function newSelectPortrait(self,portrait)
 			["webber"]=1,
 			["walani"]=1,
 			["warly"]=1,
-			--["woodlegs"]=1,
+			["woodlegs"]=1,
 			["wilbur"]=1,
 			--["warbucks"]=1,
 			["wormwood"]=1,
