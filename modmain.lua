@@ -54,6 +54,9 @@ function ApplyRussianFonts()
 	if GLOBAL.rawget(GLOBAL,"TALKINGFONT_WATHGRITHR") then
 		table.insert(RusFontsFileNames,"talkingfont_wathgrithr__ru.zip")
 	end
+	if GLOBAL.rawget(GLOBAL,"TALKINGFONT_WORMWOOD") then
+		table.insert(RusFontsFileNames,"talkingfont_wormwood__ru.zip")
+	end
 	--Ё“јѕ ¬џ√–”« »: ¬начале выгружаем шрифты, если они были загружены
 
 	--¬озвращаем в глобальные переменные шрифтов родные алиасы, которые точно работают,
@@ -67,6 +70,9 @@ function ApplyRussianFonts()
 	GLOBAL.TALKINGFONT = "talkingfont"
 	if GLOBAL.rawget(GLOBAL,"TALKINGFONT_WATHGRITHR") then
 		GLOBAL.TALKINGFONT_WATHGRITHR = "talkingfont_wathgrithr"
+	end
+	if GLOBAL.rawget(GLOBAL,"TALKINGFONT_WORMWOOD") then
+		GLOBAL.TALKINGFONT_WORMWOOD = "talkingfont_wormwood"
 	end
 	GLOBAL.SMALLNUMBERFONT = "stint-small"
 	GLOBAL.BODYTEXTFONT = "stint-ucr"
@@ -107,6 +113,9 @@ function ApplyRussianFonts()
 	GLOBAL.BODYTEXTFONT = "rusfont2"
 	if GLOBAL.rawget(GLOBAL,"TALKINGFONT_WATHGRITHR") then
 		GLOBAL.TALKINGFONT_WATHGRITHR = "rusfont8"
+	end
+	if GLOBAL.rawget(GLOBAL,"TALKINGFONT_WORMWOOD") then
+		GLOBAL.TALKINGFONT_WORMWOOD = "rusfont9"
 	end
 
 end
@@ -676,7 +685,7 @@ end
 
 
 --!!!¬–≈ћ≈ЌЌќ, –ј«–јЅќ“„» » «јЅџЋ» ƒќЅј¬»“№ Ё“ќ
-if not table.contains(GLOBAL.CHARACTER_GENDERS.FEMALE, "walani") then table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "walani") end
+if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "wormwood") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wormwood") end
 
 --‘ункци€ ищет в реплике спец-тэги, оформленные в [] и выбирает нужный, соответствующий персонажу char
 --¬арианты с разным переводом дл€ разного пола оформл€ютс€ в [] и раздел€ютс€ символом |.
