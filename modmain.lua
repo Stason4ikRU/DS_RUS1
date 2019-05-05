@@ -168,7 +168,7 @@ end
 if t.SW_Installed or t.H_Installed then
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_walani.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_warly.xml"))
-	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_woodlegs.xml"))
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_woodlegs.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilbur.xml"))
 end
 if t.H_Installed then
@@ -1027,11 +1027,16 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 		return name
 	end
 
+	--Особое исключительное написание для чертежей
 	local itisblueprint=false
-	if name:sub(-10)==" Blueprint" then --Особое исключительное написание для чертежей
+	if name:sub(-10)==" Blueprint" then
 		name=name:sub(1,-11)
 		itisblueprint=true
+	elseif name:sub(-7)==" Чертёж" then
+		name=name:sub(1,-8)
+		itisblueprint=true
 	end
+
 	--Проверим, есть ли префикс мокрости, засушенности или дымления
 	local Prefix=nil
 	if STRINGS.WET_PREFIX then
@@ -1057,6 +1062,8 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 	end
 	if act then --Если есть действие
 		act=act.action.id
+		--for i,v in pairs(self.components) do print("i=",i," v=",v) end --узнаем подробности
+
 		if act=="USEDOOR" then
 			for i,v in pairs(self.components.door.inst) do
 				if type(v)=="string" and v~="" then
@@ -1249,7 +1256,7 @@ local function newSelectPortrait(self,portrait)
 			["webber"]=1,
 			["walani"]=1,
 			["warly"]=1,
-			--["woodlegs"]=1,
+			["woodlegs"]=1,
 			["wilbur"]=1,
 			--["warbucks"]=1,
 			["wormwood"]=1,
