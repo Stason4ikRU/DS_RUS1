@@ -1138,8 +1138,12 @@ if t.H_Installed then
 			return nil
 		else
 			local item_name = string.upper(act.target.components.shopdispenser:GetItem())
-			if item_name=="DEED" then
+			--print("item_name",item_name)
+			if item_name == "DEED" then
 				wantitem = "документы на собственность"
+			elseif item_name:sub(-10) == "_BLUEPRINT" then
+				item_name = item_name:sub(1,-11)
+				wantitem = "чертёж предмета «"..STRINGS.NAMES[item_name].."»"
 			else
 				wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
 			end
