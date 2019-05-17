@@ -235,7 +235,7 @@ function rebuildname(str1,action,objectname)
 	local sogl2 = {['г']=1,['ж']=1,['к']=1,['х']=1,['ц']=1,['ч']=1,['ш']=1,['щ']=1}
 	local sogl3 = {["р"]=1,["л"]=1,["к"]=1,["Р"]=1,["Л"]=1,["К"]=1}
 
-	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true, pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_banker = true, pigman_collector = true, pigman_hunter = true, pigman_mayor = true, pigman_mechanic = true, pigman_professor = true, pigman_usher = true, pigman_royalguard = true, pigman_royalguard_2 = true, pigman_farmer = true, pigman_miner = true, pigman_queen = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true, pigman_banker_shopkeep = true, pigman_shopkeep = true, pigman_hunter_shopkeep = true, pigman_mayor_shopkeep = true, pigman_farmer_shopkeep = true, pigman_miner_shopkeep = true, pigman_collector_shopkeep = true, pigman_professor_shopkeep = true, antman_warrior = true, antman = true, ballphin = true, mandrakeman = true, parrot_pirate = true}
+	local animated = {pigman = true, pigguard = true, bunnyman = true, wildbore = true, wildboreguard = true, mermfisher = true, pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_banker = true, pigman_collector = true, pigman_hunter = true, pigman_mayor = true, pigman_mechanic = true, pigman_professor = true, pigman_usher = true, pigman_royalguard = true, pigman_royalguard_2 = true, pigman_farmer = true, pigman_miner = true, pigman_queen = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true, pigman_banker_shopkeep = true, pigman_shopkeep = true, pigman_hunter_shopkeep = true, pigman_mayor_shopkeep = true, pigman_farmer_shopkeep = true, pigman_miner_shopkeep = true, pigman_collector_shopkeep = true, pigman_professor_shopkeep = true, pigman_mechanic_shopkeep = true, antman_warrior = true, antman = true, ballphin = true, mandrakeman = true, parrot_pirate = true}
 	--
 	local pigfemale = {pigman_beautician = true, pigman_florist = true, pigman_erudite = true, pigman_hatmaker = true, pigman_storeowner = true, pigman_beautician_shopkeep = true, pigman_florist_shopkeep = true, pigman_erudite_shopkeep = true, pigman_hatmaker_shopkeep = true, pigman_storeowner_shopkeep = true}
 	local seeds = {SEEDS = true, CORN_SEEDS = true, WATERMELON_SEEDS = true, CARROT_SEEDS = true, DRAGONFRUIT_SEEDS = true, DURIAN_SEEDS = true, EGGPLANT_SEEDS = true, POMEGRANATE_SEEDS = true, PUMPKIN_SEEDS = true, SWEET_POTATO_SEEDS = true, COFFEEBEANS = true, DEERCLOPS_EYEBALL = true, COONTAIL = true}
@@ -1139,13 +1139,16 @@ if t.H_Installed then
 		else
 			local item_name = string.upper(act.target.components.shopdispenser:GetItem())
 			--print("item_name",item_name)
-			if item_name == "DEED" then
-				wantitem = "документы на собственность"
-			elseif item_name:sub(-10) == "_BLUEPRINT" then
+			if item_name:sub(-10) == "_BLUEPRINT" then
 				item_name = item_name:sub(1,-11)
 				wantitem = "чертёж предмета «"..STRINGS.NAMES[item_name].."»"
 			else
-				wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+				name = STRINGS.NAMES[item_name]
+				wantitem = t.RussianNames[name] and	(t.RussianNames[name]["SHOP"] or t.RussianNames[name]["DEFAULTACTION"] or t.RussianNames[name]["DEFAULT"])
+				or rebuildname(name,"SHOP",item_name) or name
+				if not t.ShouldBeCapped[item_name] and wantitem and type(wantitem)=="string" and #wantitem>0 then
+					wantitem = firsttolower(wantitem)
+			end
 			end
 			local payitem = STRINGS.NAMES[string.upper(act.target.costprefab)]
 			local qty = ""
@@ -1157,6 +1160,7 @@ if t.H_Installed then
 					else
 						payitem = STRINGS.NAMES.OINC.."ов"
 					end
+					payitem = firsttolower(payitem)
 				end
 			end
 
@@ -1180,6 +1184,9 @@ if t.H_Installed then
 						wantitem = "почтовую карточку Королевского дворца"
 					else
 						wantitem = rebuildname(STRINGS.NAMES[item_name],"SHOP",item_name)
+						if not t.ShouldBeCapped[item_name] and wantitem and type(wantitem)=="string" and #wantitem>0 then
+							wantitem = firsttolower(wantitem)
+						end
 					end
 				end
 
