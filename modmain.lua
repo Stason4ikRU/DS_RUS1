@@ -1193,6 +1193,7 @@ if t.H_Installed then
 				if wantitem then
 					if GetPlayer().components.shopper:IsWatching(act.target) then
 						local payitem = STRINGS.NAMES[string.upper("oinc")]
+						payitem = firsttolower(payitem)
 						local qty = "1"
 						return GLOBAL.subfmt(STRINGS.ACTIONS.SHOP_LONG, { wantitem = wantitem, qty=qty, payitem = payitem })
 					else								    
