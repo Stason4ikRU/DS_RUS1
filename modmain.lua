@@ -175,6 +175,7 @@ if t.H_Installed then
 	--table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_warbucks.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wormwood.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilba.xml"))
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wheeler.xml"))
 end
 
 
@@ -685,7 +686,10 @@ end
 
 
 --!!!¬–≈ћ≈ЌЌќ, –ј«–јЅќ“„» » «јЅџЋ» ƒќЅј¬»“№ Ё“ќ
+if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "warbucks") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "warbucks") end
+if not table.contains(GLOBAL.CHARACTER_GENDERS.FEMALE, "wilba") then table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "wilba") end
 if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "wormwood") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wormwood") end
+if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "wagstaff") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wagstaff") end
 
 --‘ункци€ ищет в реплике спец-тэги, оформленные в [] и выбирает нужный, соответствующий персонажу char
 --¬арианты с разным переводом дл€ разного пола оформл€ютс€ в [] и раздел€ютс€ символом |.
@@ -1272,7 +1276,8 @@ local function newSelectPortrait(self,portrait)
 			["wilbur"]=1,
 			--["warbucks"]=1,
 			["wormwood"]=1,
-			["wilba"]=1
+			["wilba"]=1,
+			["wheeler"]=1
 		}
 		local name=string.sub(self.heroportait.texture,1,-5)
 		if list[name] then
