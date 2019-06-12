@@ -1230,7 +1230,11 @@ function NewGetHoverTextOverride(self)
 			--меняем первый символ названия предмета в нижний регистр
 		 	name=firsttolower(name)
 		end
-		return STRINGS.UI.HUD.BUILD.. " " .. name
+		local string = STRINGS.UI.HUD.BUILD.. " " .. name
+		if self.placer_recipe.flipable then
+			string = string.. "\n" .. STRINGS.UI.HUD.FLIP
+		end
+		return string
 	end
 end
 
@@ -1238,6 +1242,7 @@ AddClassPostConstruct("components/playercontroller", function(self)
 	GetHoverTextOverride=self["GetHoverTextOverride"]
 	self["GetHoverTextOverride"]=NewGetHoverTextOverride
 end)
+
 
 
 --исправление склонения слова "день" в меню паузы
@@ -1298,37 +1303,43 @@ end)
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BRANCHING = "Дробность суши"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LOOP = "Цикличность суши"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SEASON = "Сезоны"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WEATHER = "Осадки"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LIGHTNING = "Молнии"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LIGHTNING = "Молнии" --Молния
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.CAVE_ENTRANCE = "Вход в пещеру"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SAPLING = "Саженцы"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SAPLING = "Саженцы" --Саженец
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MARSHBUSH = "Колючие кусты"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.ROCKS = "Валуны"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BERRYBUSH = "Ягодные кусты"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.REEDS = "Камыши" --Камыш
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.FLINT = "Кремни" --Кремень
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.ROCKS = "Валуны" --Камни
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BERRYBUSH = "Ягодные кусты" --Ягодный куст
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.CARROT = "Моркови" --Морковь
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.RABBITS = "Кролики"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BUTTERFLY = "Бабочки" --Бабочка
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PERD = "Индюки" --Индюк
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PIGS = "Свины"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BEEFALOHEAT = "Сезон размножения бифало"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.HUNT = "Следы"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PENGUINS = "Пинчайки"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.FROGS = "Пруды"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.BEES = "Дикие ульи"
---STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MERM = "Мэрмы"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MERM = "Мэрмы" --Мэрм
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.TENTACLES = "Щупальца"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.CHESS = "Шахматные фигуры"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.LIEFS = "Энты"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PONDS = "Пруды"
 --ROG
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.AUTUMN = "Осень"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WINTER = "Зима"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SPRING = "Весна"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.SUMMER = "Лето"
-STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.FROGRAIN = "Дождь из лягушек"
-STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WILDFIRES = "Самовозгорание"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.FROGRAIN = "Дожди из лягушек"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.WILDFIRES = "Самовозгорания"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.TUMBLEWEED = "Перекати-поля" --Перекати-поле
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.ROCK_ICE = "Мини-ледники" --Мини-ледник
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.MOLES = "Кроточерви"
+STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.CACTUS = "Кактусы" --Кактус
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.DECIDUOUSMONSTER = "Лиственный энт"
 STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.GOOSEMOOSE = "Лось(Гусь)"
-STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES.PONDS = "Пруды"
 
-
+customizationscreen_correction_strings = {"LIGHTNING","SAPLING","REEDS","FLINT","BERRYBUSH","CARROT","BUTTERFLY","PERD","MERM","TUMBLEWEED","ROCK_ICE","CACTUS"}
 
 local oldRefreshOptions --Старая функция заполнения опций в меню настроек карты
 local function newRefreshOptions(self) --Новая функция
@@ -1356,6 +1367,11 @@ local function newRefreshOptions(self) --Новая функция
 	for v in pairs(a) do --Перебираем ячейки
 		if tostring(v)=="option" then
 			for prefab in pairs(v:GetChildren()) do --Ищем картинку и спиннер в ячейке
+				for j, val in ipairs(customizationscreen_correction_strings) do
+					if STRINGS.NAMES[val] and STRINGS.NAMES[val]==prefab.tooltip then
+						prefab.tooltip = STRINGS.UI.CUSTOMIZATIONSCREEN.NAMES[val]
+					end
+				end
 				if prefab.name and prefab.name:upper()=="IMAGE" then
 					if list[prefab.texture] then
 						prefab:SetTexture(MODROOT.."images/rus_mapgen.xml", "rus_"..prefab.texture)
