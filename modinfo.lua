@@ -1,5 +1,5 @@
 name = "Russian - Hamlet"
-version = "5.8.7"
+version = "5.8.8"
 desc = {en = "Russian localization of the game compiled from the user-suggested translations. The best translations are chosen via user voting. \n\nVersion: "..version,
 		ru = "\nРусификация игры, собранная на основе\nголосований за переводы реплик.\nВерсия: "..version}
 description = desc[language] or desc["en"]
