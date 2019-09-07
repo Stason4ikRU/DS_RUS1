@@ -176,6 +176,7 @@ if t.H_Installed then
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wormwood.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilba.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wheeler.xml"))
+	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wagstaff.xml"))
 end
 
 
@@ -688,7 +689,6 @@ end
 --!!!ВРЕМЕННО, РАЗРАБОТЧИКИ ЗАБЫЛИ ДОБАВИТЬ ЭТО
 if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "warbucks") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "warbucks") end
 if not table.contains(GLOBAL.CHARACTER_GENDERS.FEMALE, "wilba") then table.insert(GLOBAL.CHARACTER_GENDERS.FEMALE, "wilba") end
-if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "wormwood") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wormwood") end
 if not table.contains(GLOBAL.CHARACTER_GENDERS.MALE, "wagstaff") then table.insert(GLOBAL.CHARACTER_GENDERS.MALE, "wagstaff") end
 
 --Функция ищет в реплике спец-тэги, оформленные в [] и выбирает нужный, соответствующий персонажу char
@@ -1049,7 +1049,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 		end 
 		if string.sub(name,1,#STRINGS.WITHEREDITEM)==STRINGS.WITHEREDITEM then Prefix=STRINGS.WITHEREDITEM 
 		elseif string.sub(name,1,#STRINGS.SMOLDERINGITEM)==STRINGS.SMOLDERINGITEM then Prefix=STRINGS.SMOLDERINGITEM
-		elseif string.sub(name,1,#STRINGS.MYSTERIOUS)==STRINGS.MYSTERIOUS then Prefix=STRINGS.MYSTERIOUS end
+		elseif t.H_Installed and string.sub(name,1,#STRINGS.MYSTERIOUS)==STRINGS.MYSTERIOUS then Prefix=STRINGS.MYSTERIOUS end
 		if Prefix then --Нашли префикс. Меняем его и удаляем из имени для его дальнейшей корректной обработки
 			name=string.sub(name,#Prefix+2)--Убираем префикс из имени
 			if act then
@@ -1282,7 +1282,8 @@ local function newSelectPortrait(self,portrait)
 			--["warbucks"]=1,
 			["wormwood"]=1,
 			["wilba"]=1,
-			["wheeler"]=1
+			["wheeler"]=1,
+			["wagstaff"]=1
 		}
 		local name=string.sub(self.heroportait.texture,1,-5)
 		if list[name] then
