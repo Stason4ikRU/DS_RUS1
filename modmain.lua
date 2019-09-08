@@ -158,7 +158,8 @@ Assets={
 	Asset("ATLAS",MODROOT.."images/rus_woodie.xml"), 
 	Asset("ATLAS",MODROOT.."images/rus_wes.xml"), 
 	Asset("ATLAS",MODROOT.."images/rus_wolfgang.xml"), 
-	Asset("ATLAS",MODROOT.."images/rus_wendy.xml")
+	Asset("ATLAS",MODROOT.."images/rus_wendy.xml"),
+	Asset("ATLAS",MODROOT.."images/rus_wagstaff.xml")
 }
 
 if t.ROG_Installed or t.SW_Installed or t.H_Installed then
@@ -176,7 +177,6 @@ if t.H_Installed then
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wormwood.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wilba.xml"))
 	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wheeler.xml"))
-	table.insert(Assets,Asset("ATLAS",MODROOT.."images/rus_wagstaff.xml"))
 end
 
 
