@@ -215,6 +215,10 @@
 #RAWLING
 #TWISTER_SEAL
 #KRAKEN
+#PEAGAWK
+#GLOWFLY
+#DUNGBEETLE
+#HIPPOPOTAMOOSE
 
 
 
@@ -527,6 +531,11 @@
 #WOODLEGSHAT
 #OX_FLUTE
 #CLAWPALMTREE
+#ASPARAGUS
+#ASPARAGUS_PLANTED
+#ROCK_FLIPPABLE
+#GRASS_TALL
+#DUNGPILE
 
 
 
@@ -648,6 +657,10 @@
 #WRECK
 #KRAKEN_TENTACLE
 #SPEAR_LAUNCHER
+#RAINFORESTTREE
+#RAINFORESTTREE_ROT
+#ALOE
+#ALOE_PLANTED
 
 
 
@@ -698,7 +711,6 @@
 #DURIAN_SEEDS
 #BERRIES_COOKED
 #PEROGIES
-#FIREFLIES
 #KABOBS
 #HONEYNUGGETS
 #GLOMMERWINGS
@@ -724,6 +736,13 @@
 #WALLYINTRO_DEBRIS
 #FRESHFRUITCREPES
 #WRECKOF
+
+
+
+
+# МНОЖЕСТВЕННОЕ ЧИСЛО 2 КЛАСС:
+#FIREFLIES
+
 
 
 
@@ -1061,6 +1080,7 @@
 #Осмотреть лампочку на проводе				Лампочка на проводе				SWINGING_LIGHT_BASIC_BULB
 #Осмотреть лампу Эдисона					Лампа Эдисона					DECO_LAMP_EDISON
 #Осмотреть желтое брюшко комара				Желтое брюшко комара			MOSQUITOSACK_YELLOW
+#Осмотреть большого светлячка				Большой светлячок				GLOWFLY
 
 
 
