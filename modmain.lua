@@ -1036,7 +1036,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 	if name:sub(-10)==" Blueprint" then
 		name=name:sub(1,-11)
 		itisblueprint=true
-	elseif name:sub(-7)==" Чертёж" then
+	elseif name:sub(-7)==" Чертеж" then
 		name=name:sub(1,-8)
 		itisblueprint=true
 	end
@@ -1062,6 +1062,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 					Prefix=firsttolower(Prefix)
 				end				
 			end
+			print("GetDisplayNameNew", Prefix, self.prefab)
 		end
 	end
 	if act then --Если есть действие
@@ -1077,7 +1078,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 		end
 		local exit_places = {pig_shop_doormats = true, doorway_cave = true, doorway_ruins = true, palace_door = true}
 		if itisblueprint then
-			name="чертёж предмета \""..name.."\""
+			name="чертеж предмета \""..name.."\""
 		elseif act=="USEDOOR" and self.components.door.inst.prefab == "prop_door" and exit_places[self.components.door.inst.door_data_bank] then
 			local exit_place = self.components.door.inst.door_data_bank
 			if exit_place == "pig_shop_doormats" then
@@ -1121,7 +1122,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 		end
 
 	else	--Если нет действия
-	    if itisblueprint then name="Чертёж предмета \""..name.."\"" end
+	    if itisblueprint then name="Чертеж предмета \""..name.."\"" end
 		if not t.ShouldBeCapped[self.prefab] and (self:GetAdjective() or Prefix) then
 		 	name=firsttolower(name)
 		end
@@ -1145,7 +1146,7 @@ if t.H_Installed then
 			--print("item_name",item_name)
 			if item_name:sub(-10) == "_BLUEPRINT" then
 				item_name = item_name:sub(1,-11)
-				wantitem = "чертёж предмета «"..STRINGS.NAMES[item_name].."»"
+				wantitem = "чертеж предмета «"..STRINGS.NAMES[item_name].."»"
 			else
 				name = STRINGS.NAMES[item_name]
 				wantitem = t.RussianNames[name] and	(t.RussianNames[name]["SHOP"] or t.RussianNames[name]["DEFAULTACTION"] or t.RussianNames[name]["DEFAULT"])
