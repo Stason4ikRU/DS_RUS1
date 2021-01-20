@@ -836,9 +836,10 @@ end
 
 
 
-for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
-	GLOBAL.LanguageTranslator.languages["ru"][i]=FixQuotes(GLOBAL.LanguageTranslator.languages["ru"][i])
-end
+--отключил, т.к. сочетание заглавной буквы и закрывающейся ёлочки превращается в вопросик
+--for i,v in pairs(GLOBAL.LanguageTranslator.languages["ru"]) do
+--	GLOBAL.LanguageTranslator.languages["ru"][i]=FixQuotes(GLOBAL.LanguageTranslator.languages["ru"][i])
+--end
 
 
 
