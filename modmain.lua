@@ -1037,7 +1037,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 	if name:sub(-10)==" Blueprint" then
 		name=name:sub(1,-11)
 		itisblueprint=true
-	elseif name:sub(-7)==" Чертеж" then
+	elseif name:sub(-7)==" Чертеж" or name:sub(-7)==" чертеж" then
 		name=name:sub(1,-8)
 		itisblueprint=true
 	end
@@ -1147,7 +1147,7 @@ if t.H_Installed then
 			--print("item_name",item_name)
 			if item_name:sub(-10) == "_BLUEPRINT" then
 				item_name = item_name:sub(1,-11)
-				wantitem = "чертеж предмета «"..STRINGS.NAMES[item_name].."»"
+				wantitem = "чертеж предмета \""..STRINGS.NAMES[item_name].."\""
 			else
 				name = STRINGS.NAMES[item_name]
 				wantitem = t.RussianNames[name] and	(t.RussianNames[name]["SHOP"] or t.RussianNames[name]["DEFAULTACTION"] or t.RussianNames[name]["DEFAULT"])
