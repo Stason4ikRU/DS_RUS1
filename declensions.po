@@ -240,6 +240,16 @@
 #PIGMAN_PROFESSOR_SHOPKEEP
 #PIGMAN_MECHANIC_SHOPKEEP
 #APORKALYPSE_CLOCK
+#PANGOLDEN
+#ARMORSNURTLESHELL
+#ARMORVORTEXCLOAK
+#ARMOR_LIFEJACKET
+#BEARGERVEST
+#BLUBBERSUIT
+#RAINCOAT
+#REFLECTIVEVEST
+#SWEATERVEST
+#TARSUIT
 
 
 
@@ -580,6 +590,14 @@
 #ROC_NEST_DEBRIS4
 #CAVE_ENTRANCE_ROC
 #TAR
+#THUNDERBIRD
+#ARMOR_BRAMBLE
+#ARMOR_METALPLATE
+#ARMOR_WEEVOLE
+#ANTMASKHAT
+#BANDITHAT
+#DISGUISEHAT
+#PIGCROWNHAT
 
 
 
@@ -788,6 +806,9 @@
 #WALLYINTRO_DEBRIS
 #FRESHFRUITCREPES
 #WRECKOF
+#GOGGLESHEATHAT
+#GOGGLESNORMALHAT
+#GOOGLESSHOOTHAT
 
 
 
@@ -1135,7 +1156,7 @@
 #Осмотреть большого светлячка				Большой светлячок				GLOWFLY
 #Осмотреть календарь свинопокалипсиса		Календарь свинопокалипсиса		APORKALYPSE_CLOCK
 #Осмотреть летучих мышей-вампиров			Летучие мыши-вампиры			VAMPIREBAT
-
+#Осмотреть грозовую птицу					Грозовая птица					THUNDERBIRD
 
 
 # ------------------------------------------------------------------------------ Действие build
@@ -1256,7 +1277,7 @@
 #Идти к Саженцу каштановой березы		Саженец каштановой березы		ACORN_SAPLING
 #Идти к Крыльям гломмера				Крылья гломмера					GLOMMERWINGS
 #Идти к Вольт-козе						Вольт-коза						LIGHTNINGGOAT
-#Идти к Крото-очкам						Крото-очки						MOLEHAT
+#Идти к Кротокулярам					Кротокуляры						MOLEHAT
 #Идти к Кроточервю						Кроточервь						MOLE_ABOVEGROUND
 #Идти к Кроточервю						Кроточервь						MOLE
 #Идти к Кое-как собранному порталу		Кое-как собранный портал		MULTIPLAYER_PORTAL
@@ -1403,3 +1424,83 @@
 #Купить разрешение на снос					Разрешение на снос					DEMOLITION_PERMIT
 #Купить шляпу для сафари					Шляпа для сафари					PITHHAT
 #Купить документы на собственность			Документы на собственность			DEED
+
+
+
+
+--------Gear----------------Gen (Родительный)-------Acc (Винительный)-------Pre (Предложный)
+ATHgear	ARMORCACTUS			Кактусовой брони		Кактусовую броню		Кактусовой броне
+ATHgear	ARMORDRAGONFLY		Чешуйчатой брони		Чешуйчатую броню		Чешуйчатой броне
+ATHgear	ARMORGRASS			Травяной брони			Травяную броню			Травяной броне
+ATHgear	ARMORLIMESTONE		Известняковой брони		Известняковую броню		Известняковой броне
+ATHgear	ARMORMARBLE			Мраморной брони			Мраморную броню			Мраморной броне
+ATHgear	ARMOROBSIDIAN		Обсидиановой брони		Обсидиановую броню		Обсидиановой броне
+ATHgear	ARMORRUINS			Тулецитовой брони		Тулецитовую броню		Тулецитовой броне
+ATHgear	ARMORSEASHELL		Брони из ракушек		Броню из ракушек		Броне из ракушек
+ATHgear	ARMORSLURPER		Пояса голода			Пояс голода				Поясе голода
+ATHgear	ARMORSNURTLESHELL	Панциря улипахи			Панцирь улипахи			Панцире улипахи
+ATHgear	ARMORVORTEXCLOAK	Вихревого плаща			Вихревой плащ			Вихревом плаще
+ATHgear	ARMORWOOD			Деревянной брони		Деревянную броню		Деревянной броне
+ATHgear	ARMOR_BRAMBLE		Ежевичной скорлупы		Ежевичную скорлупу		Ежевичной скорлупе
+ATHgear	ARMOR_LIFEJACKET	Спасательного жилета	Спасательный жилет		Спасательном жилете
+ATHgear	ARMOR_METALPLATE	Жестяной брони			Жестяную броню			Жестяной броне
+ATHgear	ARMOR_SANITY		Брони ночи				Броню ночи				Броне ночи
+ATHgear	ARMOR_SNAKESKIN		Рубашки из змеиной кожи	Рубашку из змеиной кожи	Рубашке из змеиной кожи
+ATHgear	ARMOR_WEEVOLE		Жучиной мантии			Жучиную мантию			Жучиной мантии
+ATHgear	ARMOR_WINDBREAKER	Ветровки				Ветровку				Ветровке
+ATHgear	BEARGERVEST			Жилета медвежьей спячки	Жилет медвежьей спячки	Жилете медвежьей спячки
+ATHgear	BLUBBERSUIT			Жирового костюма		Жировой костюм			Жировом костюме
+ATHgear	HAWAIIANSHIRT		Цветочной рубашки		Цветочную рубашку		Цветочной рубашке
+ATHgear	RAINCOAT			Дождевика				Дождевик				Дождевике
+ATHgear	REFLECTIVEVEST		Летнего свежилета		Летний свежилет			Летнем свежилете
+ATHgear	SWEATERVEST			Удобного жилета			Удобный жилет			Удобном жилете
+ATHgear	TARSUIT				Смоляного костюма		Смоляной костюм			Смоляном костюме
+ATHgear	TRUNKVEST_SUMMER	Толстовки				Толстовку				Толстовке
+ATHgear	TRUNKVEST_WINTER	Утепленной толстовки	Утепленную толстовку	Утепленной толстовке
+
+ATHgear	AERODYNAMICHAT		Обтекаемой шляпы		Обтекаемую шляпу		Обтекаемой шляпе
+ATHgear	ANTMASKHAT			Маски муравья			Маску муравья			Маске муравья
+ATHgear	BANDITHAT			Плутоватой шляпы		Плутоватую шляпу		Плутоватой шляпе
+ATHgear	BATHAT				Капюшона-эхолокатора	Капюшон-эхолокатор		Капюшоне-эхолокаторе
+ATHgear	BEEFALOHAT			Шляпы бифало			Шляпу бифало			Шляпе бифало
+ATHgear	BEEHAT				Шляпы пчеловода			Шляпу пчеловода			Шляпе пчеловода
+ATHgear	BRAINJELLYHAT		Мозгошляпы				Мозгошляпу				Мозгошляпе
+ATHgear	BUSHHAT				Кустошляпы				Кустошляпу				Кустошляпе
+ATHgear	CAPTAINHAT			Капитанской фуражки		Капитанскую фуражку		Капитанской фуражке
+ATHgear	CATCOONHAT			Кошачьей шапки			Кошачью шапку			Кошачьей шапке
+ATHgear	DISGUISEHAT			Свиной маски			Свиную маску			Свиной маске
+ATHgear	DOUBLE_UMBRELLAHAT	Двузонтика				Двузонтик				Двузонтике
+ATHgear	EARMUFFSHAT			Наушников				Наушники				Наушниках
+ATHgear	EYEBRELLAHAT		Глазонтика				Глазонтик				Глазонтике
+ATHgear	FEATHERHAT			Перьевой шляпы			Перьевую шляпу			Перьевой шляпе
+ATHgear	FLOWERHAT			Венка					Венок					Венке
+ATHgear	FOOTBALLHAT			Футбольного шлема		Футбольный шлем			Футбольном шлеме
+ATHgear	GASHAT				Частичного очистителя	Частичный очиститель	Частичном очистителе
+ATHgear	GASMASKHAT			Противогаза				Противогаз				Противогазе
+ATHgear	GOGGLESARMORHAT		Забрала					Забрало					Забрале
+ATHgear	GOGGLESHEATHAT		Инфракрасных очков		Инфракрасные очки		Инфракрасных очках
+ATHgear	GOGGLESNORMALHAT	Спектоочков				Спектоочки				Спектоочках
+ATHgear	GOOGLESSHOOTHAT		Огнеочков				Огнеочки				Огнеочках
+ATHgear	ICEHAT				Ледяного куба			Ледяной куб				Ледяном кубе
+ATHgear	METALPLATEHAT		Причудливого шлема		Причудливый шлем		Причудливом шлеме
+ATHgear	MINERHAT			Шахтерской каски		Шахтерскую каску		Шахтерской каске
+ATHgear	MOLEHAT				Кротокуляр				Кротокуляры				Кротокулярах
+ATHgear	OXHAT				Рогатого шлема			Рогатый шлем			Рогатом шлеме
+ATHgear	PIGCROWNHAT			Королевской короны		Королевскую корону		Королевской короне
+ATHgear	PIRATEHAT			Пиратской двууголки		Пиратскую двууголку		Пиратской двууголке
+ATHgear	PITHHAT				Шляпы для сафари		Шляпу для сафари		Шляпе для сафари
+ATHgear	RAINHAT				Дождевой шляпы			Дождевую шляпу			Дождевой шляпе
+ATHgear	RUINSHAT			Тулецитовой короны		Тулецитовую корону		Тулецитовой короне
+ATHgear	SHARK_TEETHHAT		Акульей зубной коронки	Акулью зубную коронку	Акульей зубной коронке
+ATHgear	SLURPER				Проглота				Проглота				Проглоте
+ATHgear	SLURTLEHAT			Шлема-панциря			Шлем-панцирь			Шлеме-панцире
+ATHgear	SNAKESKINHAT		Шапки из змеиной кожи	Шапку из змеиной кожи	Шапке из змеиной кожи
+ATHgear	SPIDERHAT			Паучьей шляпы			Паучью шляпу			Паучьей шляпе
+ATHgear	STRAWHAT			Соломенной шляпы		Соломенную шляпу		Соломенной шляпе
+ATHgear	THUNDERHAT			Грозового шлема			Грозовой шлем			Грозовом шлеме
+ATHgear	TOPHAT				Цилиндра				Цилиндр					Цилиндре
+ATHgear	WALRUSHAT			Тэм-о-шентера			Тэм-о-шентер			Тэм-о-шентере
+ATHgear	WATERMELONHAT		Модного арбуза			Модный арбуз			Модном арбузе
+ATHgear	WATHGRITHRHAT		Боевого шлема			Боевой шлем				Боевом шлеме
+ATHgear	WINTERHAT			Зимней шапки			Зимнюю шапку			Зимней шапке
+ATHgear	WOODLEGSHAT			Счастливой шляпы		Счастливую шляпу		Счастливой шляпе

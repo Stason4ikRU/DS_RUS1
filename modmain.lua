@@ -217,7 +217,7 @@ GLOBAL.RusUpdatePeriod={"OncePerLaunch","OncePerDay","OncePerWeek","OncePerMonth
 --Возвращает корректную форму слова день
 local function StringTime(n,s)
 	local pl_type=n%10==1 and n%100~=11 and 1 or(n%10>=2 and n%10<=4
-       		and(n%100<10 or n%100>=20)and 2 or 3)
+			and(n%100<10 or n%100>=20)and 2 or 3)
 	s=s or {"день","дня","дней"}
 	return s[pl_type]
 end 
@@ -572,6 +572,27 @@ function t.LoadFixedNames(data)
 				end
 				t.RussianNames[original][action]=translation
 			end
+		elseif line~="" and line:sub(1,7) == "ATHgear" then
+			local casePrefab = line:match("\t([^\t]+)\t")
+
+			line = line:sub(line:find(casePrefab) + #casePrefab)
+			local caseGen = line:match("\t([^\t]+)\t")
+
+			if t.RussianNames[casePrefab] then
+				t.RussianNames[casePrefab]["Gen"] = caseGen
+			else
+				t.RussianNames[casePrefab]={}
+				t.RussianNames[casePrefab]["Gen"] = caseGen
+			end
+
+			if line:find(caseGen) then
+				line = line:sub(line:find(caseGen) + #caseGen)
+			end
+			local caseAcc = line:match("\t([^\t]+)\t")
+			t.RussianNames[casePrefab]["Acc"] = caseAcc
+
+			local casePre = line:match("\t([^\t]-)$")
+			t.RussianNames[casePrefab]["Pre"] = casePre
 		end
 	end
 	if data then
@@ -606,7 +627,7 @@ GLOBAL.LanguageTranslator.languages["ru"]["STRINGS.UI.MAINSCREEN.UPDATENAME"]=UP
 --split("|","|") вернёт таблицу из "" и ""
 --По идее разделителем может служить сразу несколько символов (не тестировалось)
 local function split(str,sep)
-       	local fields, first = {}, 1
+	local fields, first = {}, 1
 	str=str..sep
 	for i=1,#str do
 		if string.sub(str,i,i+#sep-1)==sep then
@@ -614,7 +635,7 @@ local function split(str,sep)
 			first=i+#sep
 		end
 	end
-        return fields
+	return fields
 end
 
 
@@ -726,7 +747,7 @@ function t.ParseTranslationTags(message, char, talker, optionaltags)
 			local vars2=split(v,"=")
 			if #vars2==1 then counter=counter+1 end
 			local path=(#vars2==2) and vars2[1] or 
-			        (((counter==1) and "he")
+					(((counter==1) and "he")
 				or ((counter==2) and "she")
 				or ((counter==3) and "it")
 				or ((counter==4) and "plural")
@@ -799,6 +820,92 @@ function t.ParseTranslationTags(message, char, talker, optionaltags)
 	end
 	return message
 end
+
+
+
+--функция выбора правильного окончания в зависимости от рода предмета для фраз ANNOUNCE_TOO_HUMID
+local function ParseHumidString(message, item)
+	if not (message and string.find(message,"(",1,true)) then return message end
+
+	--Определим пол
+	local gender = 1
+	if t.NamesGender["he2"][item] then gender = 1
+	elseif t.NamesGender["she"][item] then gender = 2
+	elseif t.NamesGender["it"][item] then gender = 3
+	elseif t.NamesGender["plural"][item] then gender = 4
+	elseif t.NamesGender["plural2"][item] then gender = 4 end
+
+	local function choiseEnd(str, n)
+		local vars=split(str,"|")
+		return vars[n]
+	end
+
+	--выбираем правильные окончания в зависимости от рода
+	for w in string.gmatch(message, "%([^)]*%)") do 
+		message = message:gsub("%([^)]*%)", tostring(choiseEnd(string.sub(w,2,-2),gender)), 1)
+	end
+
+	return message
+end
+
+
+
+
+--подмена функции для реплик ANNOUNCE_TOO_HUMID
+if t.H_Installed then
+	local OldOnEquip
+	function NewOnEquip(self, data)
+		local itemPrefab = nil
+		if type(data) == "table" then
+			itemPrefab = tostring(data.item.prefab)
+			print('OnEquipNew data.item.prefab:' .. itemPrefab .. ' data.item.name:' .. tostring(data.item.name))
+		end
+
+		if self.groggyweather then
+			local hotitems = self:hasoverheatinggear()
+			if hotitems and #hotitems > 0 then
+				local string = hotitems[1].name
+				if data then
+					string = nil
+					for i,item in ipairs(hotitems)do
+						if item == data.item then
+							string = item.name
+						end
+					end
+				end
+				if string and itemPrefab then --сразу после загрузки фраза не будет произнесена
+					local replika = GLOBAL.GetString(self.inst.prefab, "ANNOUNCE_TOO_HUMID")
+
+					local case = "Nom" --именительный падеж по умолчанию
+
+					if string.find(replika, "%[") then --проверяем, указан ли другой падеж
+						case = string.sub(replika:match("%[[^]]*%]"),2,-2)
+						print("NewOnEquip case", case)
+						replika = replika:gsub("%[[^]]*%]", "", 1)
+					end
+
+					if case ~= "Nom"then
+						string = t.RussianNames[string.upper(itemPrefab)][case]
+					end
+
+					if string.find(replika, "%%s") ~= 1 then
+						string = firsttolower(string)
+					end
+
+					replika = ParseHumidString(replika, itemPrefab)
+
+					self.inst.components.talker:Say(string.format(replika, string))
+				end
+			end
+		end
+	end
+
+	AddClassPostConstruct("components/grogginess", function(self)
+		OldOnEquip = self["onequip"]
+		self["onequip"] = NewOnEquip
+	end)
+end
+
 
 
 --Функция заменяет ' и " на «»
@@ -995,7 +1102,7 @@ AddClassPostConstruct("widgets/hoverer", function(self)
 	function self:OnUpdate(...)
 		local changed = false
 		local OldlmbtargetGetDisplayName
-        local lmb = self.owner and self.owner.components and self.owner.components.playercontroller and self.owner.components.playercontroller:GetLeftMouseAction()
+		local lmb = self.owner and self.owner.components and self.owner.components.playercontroller and self.owner.components.playercontroller:GetLeftMouseAction()
 		if lmb and lmb.target and lmb.target.GetDisplayName then
 			changed = true
 			OldlmbtargetGetDisplayName = lmb.target.GetDisplayName
@@ -1108,7 +1215,7 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 				or rebuildname(name,act,self.prefab) or name
 			name = string.format(name, self.components.named.name)
 			name = t.ParseTranslationTags(name, nil, nil, act)
-		 	name = firsttolower(name)
+			name = firsttolower(name)
 		else
 			STRINGS.ACTIONS.USEDOOR = "Войти в"
 			name = t.RussianNames[name] and
@@ -1118,21 +1225,21 @@ function GetDisplayNameNew(self, act) --Подмена функции, выводящей название пред
 			if not (self.prefab and animated[self.prefab])
 			 and not t.ShouldBeCapped[self.prefab] and name and type(name)=="string" and #name>0 then
 				--меняем первый символ названия предмета в нижний регистр
-			 	name=firsttolower(name)
+				name=firsttolower(name)
 			end
 		end
 
 	else	--Если нет действия
-	    if itisblueprint then name="Чертеж предмета \""..name.."\"" end
+		if itisblueprint then name="Чертеж предмета \""..name.."\"" end
 		if not t.ShouldBeCapped[self.prefab] and (self:GetAdjective() or Prefix) then
-		 	name=firsttolower(name)
+			name=firsttolower(name)
 		end
 	end
 	if Prefix then
 		name=Prefix.." "..name
 	end
 	if act and act=="SLEEPIN" and name then name="в "..name end --Особый случай для "спать в палатке" и "спать в навесе для сиесты"
-    return name
+	return name
 end
 GLOBAL.EntityScript["GetDisplayName"]=GetDisplayNameNew --подменяем на новую
 
@@ -1230,7 +1337,7 @@ function NewGetHoverTextOverride(self)
 		end
 		if not t.ShouldBeCapped[self.placer_recipe.name] and name and type(name)=="string" and #name>0 then
 			--меняем первый символ названия предмета в нижний регистр
-		 	name=firsttolower(name)
+			name=firsttolower(name)
 		end
 		local string = STRINGS.UI.HUD.BUILD.. " " .. name
 		if self.placer_recipe.flipable then
@@ -1471,12 +1578,12 @@ AddClassPostConstruct("widgets/recipepopup", function(self) --Уменьшаем шрифт оп
 				self:OldRefresh(...)
 				if not self.name then return end
 				local Text = require "widgets/text"
-		    local tmp = self.contents:AddChild(Text(GLOBAL.UIFONT, 36))
-			      tmp:SetPosition(320, 142, 0)
-			      tmp:SetHAlign(GLOBAL.ANCHOR_MIDDLE)
-			      tmp:Hide()
-		        tmp:SetString(self.name:GetString())
-			    local desiredw = self.name:GetRegionSize()
+			local tmp = self.contents:AddChild(Text(GLOBAL.UIFONT, 36))
+				  tmp:SetPosition(320, 142, 0)
+				  tmp:SetHAlign(GLOBAL.ANCHOR_MIDDLE)
+				  tmp:Hide()
+				tmp:SetString(self.name:GetString())
+				local desiredw = self.name:GetRegionSize()
 				local w = tmp:GetRegionSize()
 				tmp:Kill()
 				if w>desiredw then
@@ -1634,8 +1741,8 @@ end)
 --Для тех, кто пользуется ps4 или NACL должна быть возможность сохранять не в ини файле, а в облаке.
 --Для этого дорабатываем функционал стандартного класса PlayerProfile
 local function SetLocalizaitonValue(self,name,value) --Метод, сохраняющий опцию с именем name и значением value
-    local USE_SETTINGS_FILE = GLOBAL.PLATFORM ~= "PS4" and GLOBAL.PLATFORM ~= "NACL"
- 	if USE_SETTINGS_FILE then
+	local USE_SETTINGS_FILE = GLOBAL.PLATFORM ~= "PS4" and GLOBAL.PLATFORM ~= "NACL"
+	if USE_SETTINGS_FILE then
 		GLOBAL.TheSim:SetSetting("translation", tostring(name), tostring(value))
 	else
 		self:SetValue(tostring(name), tostring(value))
@@ -1644,8 +1751,8 @@ local function SetLocalizaitonValue(self,name,value) --Метод, сохраняющий опцию 
 	end
 end
 local function GetLocalizaitonValue(self,name) --Метод, возвращающий значение опции name
-        local USE_SETTINGS_FILE = GLOBAL.PLATFORM ~= "PS4" and GLOBAL.PLATFORM ~= "NACL"
- 	if USE_SETTINGS_FILE then
+		local USE_SETTINGS_FILE = GLOBAL.PLATFORM ~= "PS4" and GLOBAL.PLATFORM ~= "NACL"
+	if USE_SETTINGS_FILE then
 		return GLOBAL.TheSim:GetSetting("translation", tostring(name))
 	else
 		return self:GetValue(tostring(name))
@@ -1656,10 +1763,10 @@ end
 
 --Расширяем функционал PlayerProfile дополнительной инициализацией двух методов и заданием дефолтных значений опций нашего перевода.
 AddGlobalClassPostConstruct("playerprofile", "PlayerProfile", function(self)
-        local USE_SETTINGS_FILE = GLOBAL.PLATFORM ~= "PS4" and GLOBAL.PLATFORM ~= "NACL"
- 	if not USE_SETTINGS_FILE then
-	        self.persistdata.update_is_allowed = true --Разрешено запускать обновление по умолчанию
-	        self.persistdata.update_frequency = GLOBAL.RusUpdatePeriod[3] --Раз в неделю по умолчанию
+		local USE_SETTINGS_FILE = GLOBAL.PLATFORM ~= "PS4" and GLOBAL.PLATFORM ~= "NACL"
+	if not USE_SETTINGS_FILE then
+			self.persistdata.update_is_allowed = true --Разрешено запускать обновление по умолчанию
+			self.persistdata.update_frequency = GLOBAL.RusUpdatePeriod[3] --Раз в неделю по умолчанию
 		local date=GLOBAL.os.date("*t")
 		self.persistdata.last_update_date = tostring(date.day.."."..date.month.."."..date.year) --Текущая дата по умолчанию
 	end
@@ -1754,37 +1861,37 @@ GLOBAL.Shutdown=newShutdown
 
 --Пробрасываем в настройки каждого мода переменную russian для нативной русификации (при желании автора мода).
 if GLOBAL.ModIndex.InitializeModInfoEnv then
-    --Если PeterA услышал мольбы, то поступаем цивилизованно.
-    local old_InitializeModInfoEnv = GLOBAL.ModIndex.InitializeModInfoEnv
-    GLOBAL.ModIndex.InitializeModInfoEnv = function(self,...)
-        local env = old_InitializeModInfoEnv(self,...)
+	--Если PeterA услышал мольбы, то поступаем цивилизованно.
+	local old_InitializeModInfoEnv = GLOBAL.ModIndex.InitializeModInfoEnv
+	GLOBAL.ModIndex.InitializeModInfoEnv = function(self,...)
+		local env = old_InitializeModInfoEnv(self,...)
 		env.language = "ru"
 		env.russian = true -- !!! Устаревшая ссылка. Через некоторое время будет удалена !!!
-        return env
-    end
+		return env
+	end
 else --Иначе извращаемся, как обычно.
-    local temp_mark = false --Временная метка, означающая, что в следующий вызов RunInEnvironment надо добавить russian=true
+	local temp_mark = false --Временная метка, означающая, что в следующий вызов RunInEnvironment надо добавить russian=true
    
-    --Перехватываем "kleiloadlua", чтобы установить временную метку в случае загрузки "modinfo.lua"
-    local old_kleiloadlua = GLOBAL.kleiloadlua
-    GLOBAL.kleiloadlua = function(path,...)
-        local fn = old_kleiloadlua(path,...)
-        if fn and type(fn) ~= "string" and path:sub(-12) == "/modinfo.lua" then
+	--Перехватываем "kleiloadlua", чтобы установить временную метку в случае загрузки "modinfo.lua"
+	local old_kleiloadlua = GLOBAL.kleiloadlua
+	GLOBAL.kleiloadlua = function(path,...)
+		local fn = old_kleiloadlua(path,...)
+		if fn and type(fn) ~= "string" and path:sub(-12) == "/modinfo.lua" then
 			temp_mark = true
-        end
-        return fn
-    end
+		end
+		return fn
+	end
    
-    --Перехватываем RunInEnvironment, чтобы среагировать на метку (заодно сбросить ее)
-    local old_RunInEnvironment = GLOBAL.RunInEnvironment
-    GLOBAL.RunInEnvironment = function(fn, env, ...)
+	--Перехватываем RunInEnvironment, чтобы среагировать на метку (заодно сбросить ее)
+	local old_RunInEnvironment = GLOBAL.RunInEnvironment
+	GLOBAL.RunInEnvironment = function(fn, env, ...)
 		if env and temp_mark then
 			env.language = "ru"
 			env.russian = true -- !!! Устаревшая ссылка. Через некоторое время будет удалена !!!
 			temp_mark = false
 		end
 		return old_RunInEnvironment(fn, env, ...)
-    end
+	end
 end
 
 
@@ -1793,17 +1900,17 @@ local genders_reg={"he","he2","she","it","plural","plural2", --numbers
 	he="he",he2="he2",she="she",it="it",plural="plural",plural2="plural2"};
 --[[Функция регистрирует новое имя предмета со всеми данными, необходимыми для его корректного склонения.
 
-    key - Ключ объекта. Например, MYITEM (из GLOBAL.STRINGS.NAMES.MYITEM).
-    val - Русский перевод названия объекта.
-    gender - Пол объекта. Варианты: he, he2, she, it, plural, plural2. Род нужен для склонения префиксов жары и влажности.
-	     "he" и "he2" - это мужской род, но не одно и то же, сравните: изучить влажный курган слизнепах (he),
-	     но изучить влажного паука (he2). plural2 — одушевлённое во множественном числе (если слово, например, "Чайки",
-	     то есть когда объект изначально получает название во множественном числе).
-    walkto - Склонение при подстановке во фразу "Идти к" (кому? чему?). Задавайте слова с большой буквы.
-    defaultaction - Подставляется ко всем действиям в игре, для которых не задано особое написание. Например "Осмотреть" (кого? что?).
-    capitalized - Нужно ли писать имя с большой буквы. Маленькая буква в названии не станет большой.
-	          Но если не указать true, то большая станет маленькой в фразах, где есть слово перед. Например: "Осмотреть лепестки".
-    killaction - Используется только в DST во всех предметах, которые способны убить персонажа. В игре они могут появляться в сообщениях
+	key - Ключ объекта. Например, MYITEM (из GLOBAL.STRINGS.NAMES.MYITEM).
+	val - Русский перевод названия объекта.
+	gender - Пол объекта. Варианты: he, he2, she, it, plural, plural2. Род нужен для склонения префиксов жары и влажности.
+		 "he" и "he2" - это мужской род, но не одно и то же, сравните: изучить влажный курган слизнепах (he),
+		 но изучить влажного паука (he2). plural2 — одушевлённое во множественном числе (если слово, например, "Чайки",
+		 то есть когда объект изначально получает название во множественном числе).
+	walkto - Склонение при подстановке во фразу "Идти к" (кому? чему?). Задавайте слова с большой буквы.
+	defaultaction - Подставляется ко всем действиям в игре, для которых не задано особое написание. Например "Осмотреть" (кого? что?).
+	capitalized - Нужно ли писать имя с большой буквы. Маленькая буква в названии не станет большой.
+			  Но если не указать true, то большая станет маленькой в фразах, где есть слово перед. Например: "Осмотреть лепестки".
+	killaction - Используется только в DST во всех предметах, которые способны убить персонажа. В игре они могут появляться в сообщениях
 		 типа "Был убит (кем? чем?)", то есть это творительный падеж.
 	Вместо строковых значений пола можно использовать их номера: 1) he, 2) he2, 3) she, 4) it, 5) plural, 6) plural2.
 	Вместо walkto, defaultaction и killaction можно использовать 0 или 1.
