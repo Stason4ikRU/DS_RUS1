@@ -113,6 +113,7 @@
 # ------------------------------------------------------------------------------ Род и число предметов
 
 # МУЖСКОЙ:
+#DUNGBALL
 
 # МУЖСКОЙ 2 КЛАСС:
 #WEBBER
@@ -250,8 +251,10 @@
 #REFLECTIVEVEST
 #SWEATERVEST
 #TARSUIT
-
-
+#ANCIENT_ROBOT_CLAW
+#ANCIENT_ROBOT_HEAD
+#ANCIENT_ROBOT_LEG
+#ANCIENT_ROBOT_RIBS
 
 
 # ЖЕНСКИЙ:
@@ -598,7 +601,8 @@
 #BANDITHAT
 #DISGUISEHAT
 #PIGCROWNHAT
-
+#DEFLATED_BALLOON_BASKET
+#PORKLAND_INTRO_BASKET
 
 
 
@@ -809,6 +813,7 @@
 #GOGGLESHEATHAT
 #GOGGLESNORMALHAT
 #GOOGLESSHOOTHAT
+#PORKLAND_INTRO_FLAGS
 
 
 
@@ -838,9 +843,10 @@
 #Собрать Морские блюдечки с затонувшего судна		Затонувшее судно		WRECK
 #Собрать Морские блюдечки с обломков «%s»			Обломки «%s»			WRECKOF
 #Собрать Зерна с кофейного куста					Кофейный куст			COFFEEBUSH
-#Раскопать кучу навоза								Куча навоза				DUNGPILE
 #Собрать шарик навоза								Шарик навоза			DUNGBALL
 #Собрать перья глазастого павлина					Глазастый павлин		PEAGAWK
+#Собрать кучу навоза								Куча навоза				DUNGPILE
+
 
 
 
@@ -1460,6 +1466,7 @@ ATHgear	TRUNKVEST_WINTER	Утепленной толстовки	Утепленную толстовку	Утепленной то
 
 ATHgear	AERODYNAMICHAT		Обтекаемой шляпы		Обтекаемую шляпу		Обтекаемой шляпе
 ATHgear	ANTMASKHAT			Маски муравья			Маску муравья			Маске муравья
+ATHgear	BACKPACK			Рюкзака					Рюкзак					Рюкзаке
 ATHgear	BANDITHAT			Плутоватой шляпы		Плутоватую шляпу		Плутоватой шляпе
 ATHgear	BATHAT				Капюшона-эхолокатора	Капюшон-эхолокатор		Капюшоне-эхолокаторе
 ATHgear	BEEFALOHAT			Шляпы бифало			Шляпу бифало			Шляпе бифало
@@ -1482,11 +1489,13 @@ ATHgear	GOGGLESHEATHAT		Инфракрасных очков		Инфракрасные очки		Инфракрасных очка
 ATHgear	GOGGLESNORMALHAT	Спектоочков				Спектоочки				Спектоочках
 ATHgear	GOOGLESSHOOTHAT		Огнеочков				Огнеочки				Огнеочках
 ATHgear	ICEHAT				Ледяного куба			Ледяной куб				Ледяном кубе
+ATHgear	KRAMPUS_SACK		Мешка Крампуса			Мешок Крампуса			Мешке Крампуса
 ATHgear	METALPLATEHAT		Причудливого шлема		Причудливый шлем		Причудливом шлеме
 ATHgear	MINERHAT			Шахтерской каски		Шахтерскую каску		Шахтерской каске
 ATHgear	MOLEHAT				Кротокуляр				Кротокуляры				Кротокулярах
 ATHgear	OXHAT				Рогатого шлема			Рогатый шлем			Рогатом шлеме
 ATHgear	PIGCROWNHAT			Королевской короны		Королевскую корону		Королевской короне
+ATHgear	PIGGYBACK			Свиного мешка			Свиной мешок			Свином мешке
 ATHgear	PIRATEHAT			Пиратской двууголки		Пиратскую двууголку		Пиратской двууголке
 ATHgear	PITHHAT				Шляпы для сафари		Шляпу для сафари		Шляпе для сафари
 ATHgear	RAINHAT				Дождевой шляпы			Дождевую шляпу			Дождевой шляпе
